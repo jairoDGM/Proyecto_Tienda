@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MainToolbarComponent,
     PagoFormularioComponent,
     ProductosCatalogoComponent,
-    RegistroComponent
+    RegistroComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
