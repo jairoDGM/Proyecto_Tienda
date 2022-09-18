@@ -1,8 +1,158 @@
-.container{
-    display: flex;
-    justify-content: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
 
-h1{
-    margin-top: 30%;
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+body{
+    background-color: #5A4588;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%234d397b' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    h1{
+        text-align: center;
+        color: white;
+    }
+    label{
+        color: white;
+    }
+    p{
+        color: white;
+    }
+    input{
+        background-color: black;
+        color: white;
+        border-radius: 5%;
+        border-width: 5px;
+    }
+    #contenedor{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 60%;
+        height: 60%;
+        background-color: white;
+        animation: contenedor 2s ease 0s 1 normal forwards;
+        @keyframes contenedor {
+            0% {
+                animation-timing-function: ease-in;
+                opacity: 1;
+                transform: translateY(-45px);
+            }
+        
+            24% {
+                opacity: 1;
+            }
+        
+            40% {
+                animation-timing-function: ease-in;
+                transform: translateY(-24px);
+            }
+        
+            65% {
+                animation-timing-function: ease-in;
+                transform: translateY(-12px);
+            }
+        
+            82% {
+                animation-timing-function: ease-in;
+                transform: translateY(-6px);
+            }
+        
+            93% {
+                animation-timing-function: ease-in;
+                transform: translateY(-4px);
+            }
+        
+            25%,
+            55%,
+            75%,
+            87% {
+                animation-timing-function: ease-out;
+                transform: translateY(0px);
+            }
+        
+            100% {
+                animation-timing-function: ease-out;
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+        #left{
+            background-color: #344172;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            #contenido1{
+                text-align: center;
+                margin: 5%;
+            }
+         
+        }
+        
+        #right{
+            background-color: #2C2F32;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            #contenido2{
+                display: flex;
+                flex-direction: column;
+                margin: 5%;
+            }
+            #botones{
+                display: flex;
+                align-content: center;
+                
+            }
+        }
+    }
+    
+
+    //PARA LOS BOTONES
+    .btn41-43 {
+        padding: 10px 25px;
+        font-weight: 500;
+        background: transparent;
+        outline: none !important;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+      }
+      
+      .btn-41 {
+        border: 2px solid rgb(255, 255, 255);
+        z-index: 1;
+        color: white;
+      }
+      
+      .btn-41:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        direction: rtl;
+        z-index: -1;
+        background: rgb(255, 255, 255);
+        transition: all 0.3s ease;
+      }
+      
+      .btn-41:hover {
+        color: rgb(0, 0, 0);
+      }
+      
+      .btn-41:hover:after {
+        left: auto;
+        right: 0;
+        width: 100%;
+      }
+      
+      .btn-41:active {
+        top: 2px;
+      }
+      
 }
