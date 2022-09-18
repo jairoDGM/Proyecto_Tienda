@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&family=Open+Sans:wght@700&family=Poppins:ital@0;1&display=swap');
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    position: relative;
+    background-color: #002541;
+}
+
+
+.section{
+    background: white;
+    border:1px solid black;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 40px;
+    height:95vh;
+    border-radius: 10px;
+    display: flex;
+}
+
+section .navegacion{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    width: 300px;
+    border-radius: 10px;
+    border-left: 5px solid #4d5bf9;
+    background: #4d5bf9;
+    transition: 0.5s;
+    
+}
+
+section .encabezadito{
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    margin: 20px;
+    font-size: 40px;
+    color: white;
+}
+
+section .navegacion ul {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 40px;
+}
+
+section .navegacion ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
+section .navegacion ul li.activo{
+    background-color: white;
+}
+
+section .navegacion ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    color: white;
+    text-decoration: none;
+}
+
+section .navegacion ul li.activo a{
+    color:black;
+}
+
+section .navegacion ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+
+section .navegacion ul li a .icon ion-icon{
+    font-size: 1.5rem;
+}
+
+section .navegacion ul li a .titulo{
+    position: relative;
+    display: block;
+    padding-left:10px ;
+    height: 60px;
+    line-height: 60px;
+    white-space: normal;
+}
+
+section .cuadro{
+    position: fixed;
+    display: flex;
+    text-align: center;
+    top: 20px;
+    left: 400px;
+    bottom: 20px;
+    width: 1200px;
+    border-radius: 10px;
+    border-left: 5px solid white;
+    background: white;
+}
+
+section .cuadro h1{
+    margin-left: 25%;
+    font-size: 30px;
+    font-weight: bold;
+}

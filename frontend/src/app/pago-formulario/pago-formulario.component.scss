@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&family=Open+Sans:wght@700&family=Poppins:ital@0;1&display=swap%27');
+
+body{
+    display: flex;
+    align-items: flex-start;
+}
+
+#pagina{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: 'Poppings',sans-serif;
+}
+
+#left{
+    margin: 3%;
+    height: 50%;
+    width: 35%;
+}
+
+#right{
+    
+    margin: 3%;
+    height: 50%;
+    width: 70%;
+    padding: 0.5%;
+    display: flex;
+    flex-direction: column;
+}
+
+#factura{
+    background-color: #002541;
+    margin: 1%;
+    border-radius: 4%;
+    border: 5px solid #E9D8A6;
+    color: #E9D8A6;
+    box-shadow: 20px 20px 15px -20px #E9D8A6;
+}
+
+#inferior{
+    display: flex;
+    flex-direction: row;
+}
+
+
+#toolbar{
+    background-color: rgb(17, 24, 39);
+    border: 3px solid #E9D8A6;
+    box-shadow: 20px 20px 15px -20px #E9D8A6;
+    margin-bottom: 3%;
+    padding: 2%;
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 2%;
+}
+
+#shipping{
+    background-color: #f4f4f4;
+    border: 6px solid #a5a58d;
+    box-shadow: 20px 20px 15px -20px #a5a58d;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-right: 3%;
+    height: 50%;
+    width: 200%;
+    padding: 1%;
+    border-radius: 4%;
+}
+
+#tarjeta{
+    background-color: #577590;
+    border: 6px solid #a5a58d;
+    box-shadow: 20px 20px 15px -20px #a5a58d;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 3%;
+    height: 50%;
+    width: 200%;
+    padding: 1%;
+    border-radius: 4%;
+}
+
+h1{
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 15%;
+    margin-top: 5%;
+}
+
+#contenido{
+    margin: 5%;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5%;
+}
+
+.boton2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1%;
+}
+
+.input{
+    border-radius: 5%;
+    background-color: #001219;
+    color: #E9D8A6;
+}
+
+
+select option{
+    border-radius: 5%;
+    background-color: #001219;
+    color: #E9D8A6;
+}
+
+.button{
+    background-color: #CA6702;
+}
+
+.button:hover{
+    background-color: #EE9B00;
+}
