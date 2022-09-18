@@ -13,6 +13,11 @@ import { ProductosCatalogoComponent } from './productos-catalogo/productos-catal
 import { RegistroComponent } from './registro/registro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//angular material
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
