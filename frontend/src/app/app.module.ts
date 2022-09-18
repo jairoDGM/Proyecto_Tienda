@@ -11,6 +11,7 @@ import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PagoFormularioComponent } from './pago-formulario/pago-formulario.component';
 import { ProductosCatalogoComponent } from './productos-catalogo/productos-catalogo.component';
 import { RegistroComponent } from './registro/registro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegistroComponent } from './registro/registro.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
