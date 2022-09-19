@@ -6,157 +6,155 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #ffffff;
     font-family: 'Poppins', sans-serif;
 }
 
 body{
-    background-color: #002541;
-}
-
-section{
-    border:1px solid black;
-    position: relative;
-    margin: 50px;
-    margin-top: 100px;
-    height:70vh;
-    display: flex;
-}
-
-section .logo_box{
-    position: relative;
-    width: 50%;
-    height: 100%;
-}
-
-section .logo_box::before{ 
-    content: '';
-    position:absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(225deg, #06154d,#03a9f4);
-    z-index: 1;
-    mix-blend-mode: screen;
-
-}
-
-section .logo_box img {
-    position:absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-section .cuadro_login{
-    display: flex;
+    background-color: #4d5bf9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%234d397b' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");display: flex;
     justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    
-}
-
-section .cuadro_login .form{
-    width: 50%;
-
-}
-
-section .cuadro_login .form h2{
-
-    color: #001219 ;
-    font-weight: 600;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 4px solid #005f73;
-    display:  inline-block;
-    letter-spacing: 1px;
-
-}
-
-section .cuadro_login .form .input{
-    margin-bottom: 30px;
-    border-style: none;
-
-}
-
-section .cuadro_login .form .input span{
-
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: inline-block;
-    color: #001219;
-    font-weight: 300;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-
-section .cuadro_login .form .input input{
-
-    width: 100%;
-    padding: 10px 20px;
-    outline: none;
-    font-weight: bold;
-    border: 1px solid #005f73;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color:#005f73;
-    background: transparent;
-    border-radius: 30px;
-
-}
-
-section .cuadro_login .form .input input[type="submit"]{
-
-    background: #005f73 ;
-    color: white;
-    border-style: none;
-    font-weight: bold;
-    cursor: pointer;
-
-}
-
-section .cuadro_login .form .input input[type="submit"]:hover{
-    
-    background: #0A9396 ;
-
-}
-
-section .cuadro_login .form .input p{
-
-    color: black;
-}
-
-section .cuadro_login .form .input p a{
-
-    color: #005f73;
-}
-
-@media (max-width: 768px){
-    section .logo_box{
-        position: absolute;
-        top:0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    section .cuadro_login{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-    section .cuadro_login .form {
-        width: 50%;
-        padding: 40px;
-        background: rgba (255,255,255 / 0.8);
+    .contenedor{
+        position: relative;
         
-        margin: 50px;
+        margin: 0 auto;
+        margin-top: 10vh;
+        width: 1000px;
+        height: 500px;
+        .imagen{
+            position: absolute;
+            background-color: gray;
+            width: 500px;
+            height: 500px;
+        }
+
+        .formulario{
+            position: absolute;
+            left:50%;
+            background-color: white;
+            height: 500px;
+            width: 500px;
+        }
+        .formulario form {
+            position: absolute;
+            top: 30%;
+            left: 22%;
+            display: flex;
+            flex-direction: column;
+        }
+        .formulario form input{
+            width: 150%;
+            margin-bottom:5px;
+            border-radius: 5px;
+            height: 30px;
+            
+        }
+        .formulario form span{
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        .formulario h1{
+            position: absolute;
+            top: 70px;
+            left:20%;
+            font-size: 50px;
+        }
+        .formulario button{
+            position: absolute;
+            top: 60%;
+            left:22%;
+            width: 53%;
+        }
+
+        .formulario p{
+            position: absolute;
+            top: 70%;
+            left:22%;
+        }
+
+        .formulario p a{
+            text-decoration: none;
+        }
     }
+
+
+    .bn5 {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+      }
+      
+      .bn5:before {
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowingbn5 20s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+      }
+      
+      @keyframes glowingbn5 {
+        0% {
+          background-position: 0 0;
+        }
+        50% {
+          background-position: 400% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+      
+      .bn5:active {
+        color: #000;
+      }
+      
+      .bn5:active:after {
+        background: transparent;
+      }
+      
+      .bn5:hover:before {
+        opacity: 1;
+      }
+      
+      .bn5:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #191919;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+      }
+
 }
+
+
+
+

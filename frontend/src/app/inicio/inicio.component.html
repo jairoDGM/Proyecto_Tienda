@@ -1,33 +1,22 @@
-    <!--nota: cambio genero un backgorund no full pintado-->
-    <body>
-        
-        <section>
-            <div class="logo_box">
-            <img src="https://i.blogs.es/7d00d1/pc/1366_2000.jpeg" >
+<body>
+    <div class="contenedor">
+        <div class="imagen">
+            <span><img src="../../assets/img/LOGIN.png" alt="" srcset="" width="500" height="500"></span>
         </div>
-        <div class="cuadro_login">
-            <div class="form">
-                <h2>Inicio de Sesion</h2>
-                <form action="">
-                    <div class="input">
-                        <span>Correo</span>
-                        <input type="text" name="">
-                    </div>
-                    <div class="input">
-                        <span>Contraseña</span>
-                        <input type="password" name="">
-                    </div>
-                    
-                    <div class="input">
-                        <input type="submit" (click)="moverse()" value="Iniciar Sesion" name="">
-                    </div>
-                    <br>
-                    <div class="input">
-                        <p>No tienes una cuenta? <a href="#">Registrate</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+        <div class="formulario">
+            <h1>Inicio Sesion</h1>
+            <form action="">
+                <span>Ingrese su correo:</span>
+                <input type='text'>
+                <span>Ingrese su contraseña:</span>
+                <input type='password'>
+                <span class="icon">
+                    <i class="fas fa-key"></i>
+                </span>
+            </form>
+            <button class="bn5">Iniciar Sesion</button>
 
+            <p>No tiene una cuenta? <a href="/registro">Registrese</a></p>
+        </div>
+    </div>
 </body>
