@@ -12,4 +12,5 @@ export class PagoFormularioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
