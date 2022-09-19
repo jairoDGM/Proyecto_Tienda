@@ -17,4 +17,8 @@ export class InicioComponent implements OnInit {
     this.router.navigateByUrl("/registro");
   }
 
+  moverse2(){
+    this.router.navigateByUrl("/landing-page");
+  }
+
 }

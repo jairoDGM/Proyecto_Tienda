@@ -20,6 +20,7 @@ const routes: Routes = [
   {path:"entrega-tracker",component:EntregaTrackerComponent},
   {path:"dashboard",component:DashboardComponent},
   {path:"carrito-compra",component:CarritoCompraComponent},
+  {path:"landing-page",component:LandingPageComponent},
 ];
 
 @NgModule({
