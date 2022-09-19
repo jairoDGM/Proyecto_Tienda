@@ -79,6 +79,8 @@ body{
         }
         #left{
             background-color: #344172;
+            background-image: url("../../assets/img/register.png");
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -87,7 +89,7 @@ body{
                 text-align: center;
                 margin: 5%;
             }
-         
+            
         }
         
         #right{
