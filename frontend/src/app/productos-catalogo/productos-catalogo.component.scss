@@ -1,4 +1,257 @@
-.main{
-    width: 90%;
-    margin-top: 300px;
+body{
+    /*Portada*/
+    .contenedor-portada{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 225px;
+        height: 400px;
+        background-image: url(../../assets/img/portada.jpg);
+        background-size: 100%;
+        animation: movimiento 10s infinite linear alternate ;   
+        @keyframes movimiento {
+            from{
+                background-position: bottom left;
+            }to{
+                background-position: top right;
+            }   
+            
+        }
+        .contenedor-detalles{
+            width: 100%;
+            max-width: 1200px;
+            color: white;
+            display: block;
+        }
+        .detalles{
+            width: 100%;
+            max-width: 500px;
+            color: white;
+          
+        }
+        
+        .detalles h1{
+            opacity: 0.7;
+            font-size: 40px;
+            font-weight: 100px;
+            text-align: center;
+        }
+        
+        .input-tracker label{
+            padding: 10px;
+            font-size: 20px;
+        }
+        
+        .input-tracker input{
+            color:#4d5bf9;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 100px;
+            height: 30px;
+            width: 50%;
+        }
+        
+        .input-tracker {
+            display: column;
+            text-align: center;
+        }
+        input{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bn632-hover {
+            width: 160px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 20px;
+            height: 55px;
+            text-align:center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 50px;
+            moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+          }
+          
+          .bn632-hover:hover {
+            background-position: 100% 0;
+            moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+          }
+          
+          .bn632-hover:focus {
+            outline: none;
+          }
+          
+          .bn632-hover.bn22 {
+            background-image: linear-gradient(
+              to right,
+              #0ba360,
+              #3cba92,
+              #30dd8a,
+              #2bb673
+            );
+            box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+          }
+    }
+
+    .main{
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+
+        .botones_main{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 3%;
+            .btn41-43 {
+                padding: 20px 55px;
+                margin: 1%;
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                background: transparent;
+                outline: none !important;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                display: inline-block;
+              }
+              
+              .btn-41 {
+                border: 2px solid rgb(255, 255, 255);
+                z-index: 1;
+                color: white;
+                background-color: gray;
+              }
+              
+              .btn-41:after {
+                position: absolute;
+                content: "";
+                width: 0;
+                height: 100%;
+                top: 0;
+                left: 0;
+                direction: rtl;
+                z-index: -1;
+                background: rgb(255, 255, 255);
+                transition: all 0.3s ease;
+              }
+              
+              .btn-41:hover {
+                color: rgb(0, 0, 0);
+              }
+              
+              .btn-41:hover:after {
+                left: auto;
+                right: 0;
+                width: 100%;
+              }
+              
+              .btn-41:active {
+                top: 2px;
+              }
+        }
+        
+        .elementos{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .prueba{
+                background-color: green;
+                height: 200px;
+                width: 200px;
+                margin: 1%;
+                display: flex;
+                flex-direction: column;
+                .imagenes{
+                    height: 50%;
+                    width: 100%;
+                    background-color: #0ba360;
+                    
+                }
+                .info{
+                    background-color: rgb(34, 32, 32);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 50%;
+                    width: 100%;
+                    border-radius: 10px;
+                    color: white;
+
+                    .btn41-43 {
+                        padding: 10px 25px;
+                        font-family: "Roboto", sans-serif;
+                        font-weight: 500;
+                        background: transparent;
+                        outline: none !important;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        display: inline-block;
+                      }
+                      
+                      .btn-41 {
+                        border: 2px solid rgb(255, 255, 255);
+                        z-index: 1;
+                        color: white;
+                      }
+                      
+                      .btn-41:after {
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        direction: rtl;
+                        z-index: -1;
+                        background: rgb(255, 255, 255);
+                        transition: all 0.3s ease;
+                      }
+                      
+                      .btn-41:hover {
+                        color: rgb(0, 0, 0);
+                      }
+                      
+                      .btn-41:hover:after {
+                        left: auto;
+                        right: 0;
+                        width: 100%;
+                      }
+                      
+                      .btn-41:active {
+                        top: 2px;
+                      }
+                }
+            }
+            .prueba:hover{
+                background-color: gray;
+                height: 400px;
+                width: 400px;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 }
+
+
