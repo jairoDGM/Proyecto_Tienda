@@ -44,10 +44,15 @@
 }
 
 .detalles h1{
+    text-transform: uppercase;
     opacity: 0.7;
     font-size: 40px;
-    font-weight: 100px;
-    margin-left: 80px;
+    font-weight: bold;
+    margin-left: 125px;
+}
+
+.detalles span{
+    color:#2bb673;
 }
 
 .input-tracker label{
@@ -76,7 +81,7 @@
 }
 
 
-
+/*Tracker*/
 
 
 .main{
@@ -86,7 +91,7 @@
 }
 
 .contenedor{
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 20px auto;
     padding: 40px;
     background: white;
