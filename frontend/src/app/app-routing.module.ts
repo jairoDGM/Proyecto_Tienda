@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarritoCompraComponent } from './carrito-compra/carrito-compra.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EntregaTrackerComponent } from './entrega-tracker/entrega-tracker.component';
+import { InformacionComponent } from './informacion/informacion.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:"dashboard",component:DashboardComponent},
   {path:"carrito-compra",component:CarritoCompraComponent},
   {path:"landing-page",component:LandingPageComponent},
+  {path:"informacion",component:InformacionComponent},
 ];
 
 @NgModule({

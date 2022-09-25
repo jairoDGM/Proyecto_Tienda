@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { InformacionComponent } from './informacion/informacion.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     PagoFormularioComponent,
     ProductosCatalogoComponent,
     RegistroComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    InformacionComponent
   ],
   imports: [
     BrowserModule,
