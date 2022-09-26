@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+body{
+    display: flex;
+    justify-content: center;
+   
+
+    #contenedor{ 
+      
+        height: 80%;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        margin-top: 300px;
+     
+        flex-wrap: wrap;
+        #texto{
+            display: flex;
+            align-items: center;
+         
+           h1{
+                color: white;
+                background-color: gray;
+                font-family: 'Montserrat', sans-serif;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                margin: 5px;
+            }
+        }
+        #info1{
+            display: flex;
+            flex-grow: 1;
+            background-image: url(../../assets/img/jairo_info.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            margin: 3px;
+            
+
+            //animaciones
+            animation: info1 2s ease 0s 50 normal forwards;
+            @keyframes info1 {
+                0% {
+                    transform: translate(0);
+                }
+            
+                20% {
+                    transform: translate(-2px, 2px);
+                }
+            
+                40% {
+                    transform: translate(-2px, -2px);
+                }
+            
+                60% {
+                    transform: translate(2px, 2px);
+                }
+            
+                80% {
+                    transform: translate(2px, -2px);
+                }
+            
+                100% {
+                    transform: translate(0);
+                }
+            }
+        }
+        #info2{
+            display: flex;
+            flex-grow: 1;
+            background-image: url(../../assets/img/abel_info.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat; 
+            border-radius: 10px;
+            margin: 3px;
+           
+
+            //animacion
+            animation: info2 2s ease 0s 50 normal forwards;
+            @keyframes info2 {
+                0% {
+                    transform: translate(0);
+                }
+            
+                20% {
+                    transform: translate(2px, -2px);
+                }
+            
+                40% {
+                    transform: translate(2px, 2px);
+                }
+            
+                60% {
+                    transform: translate(-2px, 2px);
+                }
+            
+                80% {
+                    transform: translate(-2px, -2px);
+                }
+            
+                100% {
+                    transform: translate(0);
+                }
+            }
+        }
+    }
+}
