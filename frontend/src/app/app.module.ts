@@ -19,6 +19,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,10 @@ import { InformacionComponent } from './informacion/informacion.component';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

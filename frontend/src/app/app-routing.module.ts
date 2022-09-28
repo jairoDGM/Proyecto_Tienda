@@ -12,7 +12,7 @@ import { ProductosCatalogoComponent } from './productos-catalogo/productos-catal
 import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
-  {path:"",component:LandingPageComponent},
+  {path:'', redirectTo:'/landing-page',pathMatch:'full'},
   {path:"inicio",component:InicioComponent},
   {path:"registro",component:RegistroComponent},
   {path:"productos-catalogo",component:ProductosCatalogoComponent},

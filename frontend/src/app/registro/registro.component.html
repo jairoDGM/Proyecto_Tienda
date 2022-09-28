@@ -9,25 +9,25 @@
         </div>
 
         <div id="right">
-            <div id="contenido2">
+            <div class="formulario" id="contenido2" [formGroup]="formGroup">
                 <h1>Ingrese sus datos</h1><br>
                 <!--Input Nombre-->
                 <label class="label">Nombre:</label>
-                <input type="text" placeholder="indique un solo nombre">
+                <input type="text" placeholder="indique un solo nombre" formControlName="nombre">
     
                 <!--input de Correo-->
                 <label class="label">Correo Electronico:</label>
-                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Email" formControlName="correo">
     
                 <!--input de Nacimiento-->
                 <label class="label">Fecha de Nacimiento:</label>
-                <input type="date">
+                <input type="text" formControlName="fecha">
                
     
                 <!--input de Contraseña-->
                 <label class="label">Contraseña:</label>
-                <input placeholder="Escriba su contraseña" type="password"><br><br>
-                <a href="" (click)="moverse()" class="btn41-43 btn-41" style="text-decoration: none;">
+                <input placeholder="Escriba su contraseña" type="password" formControlName="contrasena" formControlName="contrasena"><br><br>
+                <a href="" (click)="insertarCliente()" class="btn41-43 btn-41" style="text-decoration: none;">
                     Registrarse
                 </a>
                 <a href="/inicio" class="btn41-43 btn-41" style="text-decoration: none;">
