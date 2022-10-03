@@ -1,6 +1,6 @@
 const conn=require('../../config/database');
-
-
+const jwt= require('jsonwebtoken');
+const secretKey = "claveSecretaJWT"
 //Aqui se crean los QUERIES a la DB
 module.exports = (app) => {
     app.post('/registro_usuario',(req,res) => {
@@ -105,4 +105,21 @@ module.exports = (app) => {
             }
         });
     });
+
+    app.post('/login', (req,res)=>{
+        let consulta = `SELECT * FROM clientes WHERE correo = '${req.body.correo}' AND contrasena = '${req.body.contrasena}' `;
+        conn.query(consulta, (err,rows,cols)  => {
+            if(err){
+                res.status(500).json({status:0, mensaje:"Error en la Base de datos"});
+            }else{
+                if(rows.length >0){
+                    const token = jwt.sign({correo: req.body.correo}, secretKey, {expiresIn:'2h'});
+                    res.json({status:1, mensaje: "Usuario Exitoso", key: token});
+                }else {
+                    res.status(400).json({status:0, mensaje: "No se encontro el usuario"});
+                }
+            }
+        })
+    })
+
 }

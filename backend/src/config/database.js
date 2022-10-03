@@ -8,7 +8,7 @@ const mysql = require('mysql');
 const conn = mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'',
+    password:'123456',
     database:'db_tienda_ct',
     port:'3306'
 });
