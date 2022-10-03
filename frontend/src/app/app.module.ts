@@ -21,7 +21,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InformacionComponent } from './informacion/informacion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -46,7 +50,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatToolbarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule
+
 
   ],
   providers: [],

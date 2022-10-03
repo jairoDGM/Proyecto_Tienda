@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../modelos/Cliente';
 import { ClienteResponse } from '../modelos/ClienteResponse';
+import { ClienteResponseDel } from '../modelos/ClienteResponseDel';
+import { Producto } from '../modelos/Producto';
+import { ProductoResponse } from '../modelos/ProductoResponse';
 import { Rol } from '../modelos/Rol';
 import { RolResponse } from '../modelos/RolResponse';
 
@@ -22,9 +25,36 @@ export class BackendService {
     return this.httpClient.post<ClienteResponse>(BE_API + '/registro_usuario', cliente,httpOptions);
   }
 
-  insertarAsignacionRol(rol: Rol){
-    console.log(BE_API + '/asignacion_usuario_rol')
+  obtenerCliente(){
+    return this.httpClient.get<ClienteResponse>(BE_API + '/registro_usuario', httpOptions);
+  }
+
+  obtenerClienteyRol(){
+    return this.httpClient.get<ClienteResponse>(BE_API + '/registro_usuario_con_rol', httpOptions);
+  }
+
+  deleteCliente(id_cliente:string){
+    return this.httpClient.delete<ClienteResponseDel>(BE_API + '/registro_usuario/'+ id_cliente);
+  }
+
+  deleteProducto(codigo_producto:string){
+    return this.httpClient.delete<ProductoResponse>(BE_API + '/registro_producto/'+ codigo_producto);
+    
+  }
+
+  insertarProducto(producto: Producto){
+    console.log(BE_API + '/registro_producto')
+    console.log(producto)
+    return this.httpClient.post<ProductoResponse>(BE_API + '/registro_producto',producto,httpOptions);
+  }
+
+  obtenerProducto(){
+    return this.httpClient.get<ProductoResponse>(BE_API + '/registro_producto', httpOptions);
+  }
+
+  insertarRol(rol: Rol){
+    console.log(BE_API + '/registro_Rol')
     console.log(rol)
-    return this.httpClient.post<RolResponse>(BE_API + '/asignacion_usuario_rol', rol,httpOptions);
+    return this.httpClient.post<RolResponse>(BE_API + '/registro_Rol', rol,httpOptions);
   }
 }
