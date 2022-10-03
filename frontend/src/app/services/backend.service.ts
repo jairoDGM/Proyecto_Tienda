@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Cliente } from '../modelos/Cliente';
 import { ClienteResponse } from '../modelos/ClienteResponse';
 import { ClienteResponseDel } from '../modelos/ClienteResponseDel';
+import { LoginRequest } from '../modelos/LoginRequest';
+import { LoginResponse } from '../modelos/LoginResponse';
 import { Producto } from '../modelos/Producto';
 import { ProductoResponse } from '../modelos/ProductoResponse';
 import { Rol } from '../modelos/Rol';
@@ -56,5 +58,11 @@ export class BackendService {
     console.log(BE_API + '/registro_Rol')
     console.log(rol)
     return this.httpClient.post<RolResponse>(BE_API + '/registro_Rol', rol,httpOptions);
+  }
+
+  inicioSesion(login:LoginRequest){
+    console.log(BE_API + '/login')
+    console.log(login)
+    return this.httpClient.post<LoginResponse>(BE_API + '/login',login, httpOptions);
   }
 }

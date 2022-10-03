@@ -3,20 +3,20 @@
         <div class="imagen">
             <span><img src="../../assets/img/LOGIN.png" alt="" srcset="" width="500" height="500"></span>
         </div>
-        <div class="formulario">
+        <div class="formulario" [formGroup]="formGroup">
             <h1>Inicio Sesion</h1>
             <form action="">
                 <span>Ingrese su correo:</span>
-                <input type='text'>
+                <input type='text' formControlName="correo">
                 <span>Ingrese su contraseña:</span>
-                <input type='password'>
+                <input type='password' formControlName="contrasena">
                 <span class="icon">
                     <i class="fas fa-key"></i>
                 </span>
             </form>
-            <button class="bn5" (click)="moverse2()">Iniciar Sesion</button>
+            <button class="bn5" (click)="login()">Iniciar Sesion</button>
 
-            <p>No tiene una cuenta? <a href="/registro">Registrese</a></p>
+            <p>No tiene una cuenta? <a (click)="moverse()">Registrese</a></p>
         </div>
     </div>
 </body>

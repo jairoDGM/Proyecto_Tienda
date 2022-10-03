@@ -6,7 +6,7 @@
             <img src="../../assets/img/logonegro.png" alt="" srcset="">
         </div>
         <div class="buscador">
-            <input type="search" placeholder="Buscas algun producto?">
+            <span>Usuario en Linea: </span>
         </div>
     </div>
     <div class="container_menu">
@@ -19,14 +19,14 @@
             </label>
             <nav>
                 <ul>
-                    <li><a href="/landing-page" id="selected"></a></li>
-                    <li><a href="/productos-catalogo">Productos</a></li>
-                    <li><a href="/informacion">Informacion</a></li>
-                    <li><a href="#">Usuario</a>
+                    <li><a (click)="mover1()" id="selected"></a></li>
+                    <li><a (click)="mover2()">Productos</a></li>
+                    <li><a (click)="mover3()">Informacion</a></li>
+                    <li><a >Usuario</a>
                         <ul>
-                            <li><a href="/entrega-tracker">Tracker Pedido</a></li>
-                            <li><a href="/carrito-compra">Carrito Compras</a></li>
-                            <li><a href="/inicio">Cerrar Sesion</a></li>
+                            <li><a (click)="mover4()">Tracker Pedido</a></li>
+                            <li><a (click)="mover5()">Carrito Compras</a></li>
+                            <li><a (click)="mover6()">Cerrar Sesion</a></li>
                         </ul>
                     </li>
                 </ul>
