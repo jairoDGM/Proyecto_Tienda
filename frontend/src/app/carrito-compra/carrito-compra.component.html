@@ -15,9 +15,7 @@
             <h1>Visualizar Articulos en carrito</h1>
             <hr style="color: black; background-color: black; " />
             <!--Imprimir tabla de carrito-->
-            <p class="productos">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facere beatae dolores saepe, nemo alias, tempora consequatur quod consequuntur similique reprehenderit cum expedita ratione hic, praesentium iure ut rem recusandae?
-            Unde dicta illo, accusantium debitis incidunt nulla! Odio, natus facere. Ipsum aliquam modi velit vero vitae dolor, expedita commodi quas ex nesciunt! Illo a dolores deleniti voluptatem quisquam! Quo, beatae!
-            Ipsam, veritatis mollitia quae quas laboriosam consequuntur quidem. Odio ratione similique magnam qui, minima ipsa amet saepe ipsum? Sapiente maiores rem blanditiis atque deleniti placeat dolorem, nemo facere! Accusantium, corporis.</p>
+            <p>{{(data$|async)?.nombre_producto}}</p>
             <hr style="color: black; background-color: black; " />
             <p class="subtotal"> Subtotal:</p>
             <hr style="color: black; background-color: black; " />

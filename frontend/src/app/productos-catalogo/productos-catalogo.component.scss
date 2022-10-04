@@ -165,25 +165,52 @@ body{
         
         .elementos{
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             .prueba{
                 background-color: green;
                 height: 200px;
-                width: 200px;
+                width: 300px;
                 margin: 1%;
+                margin-bottom: 50px;
                 display: flex;
                 flex-direction: column;
             }
             .prueba:hover{
                 background-color: gray;
-                height: 350px;
+                height: 200px;
                 width: 350px;
             }
         }
     }
 
+.prueba p{
+  font-weight: bold;
+  font-style: bold;
+  font-size: 15px;
+}
 
+.extras-content{
+  background: rgb(71, 71, 71);
+  padding: 40px;
+  
+}
+
+.boton_clientes2{
+  background: #4d5bf9;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  height: 40px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 35px;
+  width: 100%;
+}
 
 
 
