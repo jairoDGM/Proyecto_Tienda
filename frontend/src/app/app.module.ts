@@ -26,6 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     MatRadioModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
 
 
   ],

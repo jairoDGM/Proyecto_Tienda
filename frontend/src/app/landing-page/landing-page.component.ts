@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShareService } from '../services/share.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private route:Router, share:ShareService) { }
 
   ngOnInit(): void {
   }
