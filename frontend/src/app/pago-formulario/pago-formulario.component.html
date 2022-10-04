@@ -1,7 +1,7 @@
+<app-main-toolbar></app-main-toolbar>
 <body>
-    <app-main-toolbar></app-main-toolbar>
     <div class="main">
-        <div id="contenedor">
+        <div id="contenedor" [formGroup]="formGroup">
             <div id="left">
                 <h1 style="color: white;">DETALLES FACTURACION</h1><br>
                 <div id="contenido1">
@@ -19,9 +19,9 @@
                     <p class="respuesta_interna">Numero Tarjeta</p>
     
                     <h2>Compras</h2>
-                    <p class="respuesta_total">Total: Q100.00</p>
+                    <p class="respuesta_factura1">Total: Q100.00</p>
                     <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
-                        <button class="bn5" style="width: 70%; margin-top: 2%;">Pagar</button>
+                        <button onclick="accionador_general('pagar')" class="bn5" style="width: 70%; margin-top: 2%;">Pagar</button>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div id="superior">
                     <div id="toolbar">
                         <div id="barra">
-                            <div id="relleno"></div>
+                            <div id="relleno" style="width: 50%;"></div>
                         </div>
                         <div id="toolbar_abajo">
                             <p>Detalles Shipping</p>
@@ -47,22 +47,22 @@
                             <h1>TARJETA PAGO</h1>
                             <!--input de nombre-->
                             <label class="label">Nombre:</label>
-                            <input type="text" placeholder="Ingrese un solo nombre">
+                            <input type="text" placeholder="Ingrese un solo nombre" >
         
                             <!--input de numero-->
                             <label class="label"># Tarjeta:</label>
-                            <input type="number" placeholder="Ingrese el numero de su tarjeta">
+                            <input type="number" placeholder="Ingrese el numero de su tarjeta" >
         
                             <!--input de vencimiento-->
                             <label class="label">Fecha Vencimiento:</label>
-                            <input type="date">
+                            <input type="date" >
         
                             <!--input de codigo-->
                             <label class="label">Codigo Seguridad:</label>
-                            <input type="number" placeholder="ingrese el codigo de seguridad">
+                            <input type="number" placeholder="ingrese el codigo de seguridad" >
         
                             <label class="label">Emisor de Tarjeta:</label>
-                            <select>
+                            <select ngfor>
                                 <option>VISA</option>
                                 <option>MASTERCARD</option>
                                 <option>AMERICAN EXPRESS</option>
@@ -70,11 +70,12 @@
                             </select>
         
                             
-                            <h3>ESTADO: APROBADA</h3>
-                            <h3># AUTORIZACION: 88239423</h3>
+                            <h3 id="respuesta_tarjeta1">ESTADO: APROBADA</h3>
+                            <h3 id="respuesta_tarjeta2"># AUTORIZACION: 88239423</h3>
                         </div>
                         <div class="botones"style="display: flex; align-items: center; flex-direction: column; margin:2%;">
-                            <button class="bn5" style="margin-bottom: 2%;">Verificar Tarjeta</button>
+                            <button onclick="accionador_general('verificar_tarjeta')" class="bn5" style="margin-bottom: 2%;">Verificar Tarjeta</button>
+                            <button onclick="accionador_general('aceptar_tarjeta')" class="bn5" style="margin-bottom: 2%;">Aceptar</button>
                         </div>
                     </div>
     
@@ -83,24 +84,29 @@
                             <h1 style="color: white;">ENVIO DOMICILIO</h1>
                             <!--input de Direccion-->
                             <label class="label" style="color: white;">Direccion de Domicilio:</label>
-                            <input type="text" placeholder="Ingrese su domicilio">
+                            <input type="text" placeholder="Ingrese su domicilio" formControlName="direccion">
         
                             <!--input de codigo postal-->
                             <label class="label" style="color: white;">Codigo Postal:</label>
-                            <input type="number" placeholder="Ingrese su codigo postal">
+                            <input type="text" placeholder="Ingrese su codigo postal" formControlName="destino">
         
                             <label class="label" style="color: white;">Empresas de Envio:</label>
-                            <select>
-                                <option>LOGIC</option>
-                                <option>GALIEX</option>
-                                <option>Y&J</option>
-                                <option>RGX</option>
+                            <select formControlName="url">
+                                <option value="/linklogic/consulta?">LOGIC</option>
+                                <option value="/linkgaliex">GALIEX</option>
+                                <option value="/linkyyj">Y&J</option>
+                                <option value="/linkrgx">RGX</option>
                             </select>
-        
+                            <br>
+                            <label>Costo:</label>
+                            <h3 id="courrier_respuesta_costo" style="color: white;">Costo: Q100.00</h3>
+                            <label>Disponibilidad de Cobertura?:</label>
+                            <h3 id="courrier_respuesta_costo" style="color: white;">Respuesta de cobertura</h3>
                         </div>
+                        
                         <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
-                            <button class="bn5" style="width: 90%;">Cotizar Precio de envio</button><br>
-                            <button class="bn5" style="width: 90%;">Aceptar Precio</button>
+                            <button onclick="accionador_general('cotizar_courrier')" class="bn5" style="width: 90%;">Cotizar Precio de envio</button><br>
+                            <button onclick="accionador_general('aceptar_courrier')" class="bn5" style="width: 90%;">Aceptar Precio</button>
                         </div>
                     </div>
                 </div>
