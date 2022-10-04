@@ -174,72 +174,11 @@ body{
                 margin: 1%;
                 display: flex;
                 flex-direction: column;
-                .imagenes{
-                    height: 50%;
-                    width: 100%;
-                    background-color: #0ba360;
-                    
-                }
-                .info{
-                    background-color: rgb(34, 32, 32);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    height: 50%;
-                    width: 100%;
-                    border-radius: 10px;
-                    color: white;
-
-                    .btn41-43 {
-                        padding: 10px 25px;
-                        font-family: "Roboto", sans-serif;
-                        font-weight: 500;
-                        background: transparent;
-                        outline: none !important;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        position: relative;
-                        display: inline-block;
-                      }
-                      
-                      .btn-41 {
-                        border: 2px solid rgb(255, 255, 255);
-                        z-index: 1;
-                        color: white;
-                      }
-                      
-                      .btn-41:after {
-                        position: absolute;
-                        content: "";
-                        width: 0;
-                        height: 100%;
-                        top: 0;
-                        left: 0;
-                        direction: rtl;
-                        z-index: -1;
-                        background: rgb(255, 255, 255);
-                        transition: all 0.3s ease;
-                      }
-                      
-                      .btn-41:hover {
-                        color: rgb(0, 0, 0);
-                      }
-                      
-                      .btn-41:hover:after {
-                        left: auto;
-                        right: 0;
-                        width: 100%;
-                      }
-                      
-                      .btn-41:active {
-                        top: 2px;
-                      }
-                }
             }
             .prueba:hover{
                 background-color: gray;
-                height: 400px;
-                width: 400px;
+                height: 350px;
+                width: 350px;
             }
         }
     }
