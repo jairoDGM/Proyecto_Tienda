@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ShareService } from '../services/share.service';
 
 @Component({
@@ -8,8 +9,11 @@ import { ShareService } from '../services/share.service';
   styleUrls: ['./main-toolbar.component.scss']
 })
 export class MainToolbarComponent implements OnInit {
-
-  constructor(private route:Router, private share: ShareService) { }
+  data$: Observable<String>;
+  constructor(private route:Router, private share: ShareService) {
+    this.data$ = share.sharingObservable;
+    
+  }
 
   ngOnInit(): void {
     this.share.currentLogin.subscribe(x => {

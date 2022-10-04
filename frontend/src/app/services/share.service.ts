@@ -9,6 +9,10 @@ export class ShareService {
   currentLogin = this.loginSource.asObservable();
   constructor() { }
 
+  get sharingObservable(){
+    return this.currentLogin;
+  }
+
   changeLogin(correo:string){
     this.loginSource.next(correo);
   }
