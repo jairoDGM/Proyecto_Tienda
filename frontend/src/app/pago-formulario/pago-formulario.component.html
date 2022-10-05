@@ -1,7 +1,7 @@
 <app-main-toolbar></app-main-toolbar>
-<body>
+<body [formGroup]="formGroup">
     <div class="main">
-        <div id="contenedor" [formGroup]="formGroup">
+        <div id="contenedor" >
             <div id="left">
                 <h1 style="color: white;">DETALLES FACTURACION</h1><br>
                 <div id="contenido1">
@@ -9,7 +9,7 @@
                     <p class="respuestas">nombre cliente</p><br>
     
                     <label for="correo_respuesta">Correo Electronico</label>
-                    <p class="respuestas">Correo del cliente</p><br>
+                    <p class="respuestas">{{(correo$ | async)}}</p><br>
     
                     <label for="Direccion_envio">Direccion Domicilio</label>
                     <p class="respuesta_interna">Direccion de shipping</p>
@@ -21,7 +21,7 @@
                     <h2>Compras</h2>
                     <p class="respuesta_factura1">Total: Q100.00</p>
                     <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
-                        <button onclick="accionador_general('pagar')" class="bn5" style="width: 70%; margin-top: 2%;">Pagar</button>
+                        <button  class="bn5" style="width: 70%; margin-top: 2%;">Pagar</button>
                     </div>
                 </div>
             </div>
@@ -74,8 +74,8 @@
                             <h3 id="respuesta_tarjeta2"># AUTORIZACION: 88239423</h3>
                         </div>
                         <div class="botones"style="display: flex; align-items: center; flex-direction: column; margin:2%;">
-                            <button onclick="accionador_general('verificar_tarjeta')" class="bn5" style="margin-bottom: 2%;">Verificar Tarjeta</button>
-                            <button onclick="accionador_general('aceptar_tarjeta')" class="bn5" style="margin-bottom: 2%;">Aceptar</button>
+                            <button  class="bn5" style="margin-bottom: 2%;">Verificar Tarjeta</button>
+                            <button  class="bn5" style="margin-bottom: 2%;">Aceptar</button>
                         </div>
                     </div>
     
@@ -91,22 +91,22 @@
                             <input type="text" placeholder="Ingrese su codigo postal" formControlName="destino">
         
                             <label class="label" style="color: white;">Empresas de Envio:</label>
-                            <select formControlName="url">
-                                <option value="/linklogic/consulta?">LOGIC</option>
-                                <option value="/linkgaliex">GALIEX</option>
-                                <option value="/linkyyj">Y&J</option>
-                                <option value="/linkrgx">RGX</option>
-                            </select>
+                            <mat-radio-group aria-label="Select an option" formControlName="url">
+                                <mat-radio-button  value="https://reqres.in/api/users/2" >GLAIEX</mat-radio-button><br>
+                                <mat-radio-button value="soy cliente">Y&J EXPRESS</mat-radio-button><br>
+                                <mat-radio-button value="soy cliente">FORZA G</mat-radio-button><br>
+                                <mat-radio-button value="soy cliente">RGX</mat-radio-button>
+                            </mat-radio-group>
                             <br>
                             <label>Costo:</label>
-                            <h3 id="courrier_respuesta_costo" style="color: white;">Costo: Q100.00</h3>
-                            <label>Disponibilidad de Cobertura?:</label>
-                            <h3 id="courrier_respuesta_costo" style="color: white;">Respuesta de cobertura</h3>
+                            <div>
+                                <h3 id="courrier_respuesta_costo" style="color: white;">{{respuestas_courrier.email}}</h3>
+                            </div>
                         </div>
                         
                         <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
-                            <button onclick="accionador_general('cotizar_courrier')" class="bn5" style="width: 90%;">Cotizar Precio de envio</button><br>
-                            <button onclick="accionador_general('aceptar_courrier')" class="bn5" style="width: 90%;">Aceptar Precio</button>
+                            <button (click)="cotizar_courrier()" class="bn5" style="width: 90%;">Cotizar Precio de envio</button><br>
+                            <button  class="bn5" style="width: 90%;">Aceptar Precio</button>
                         </div>
                     </div>
                 </div>
