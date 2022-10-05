@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -17,19 +18,19 @@ export class ShareService {
   private loginSource = new BehaviorSubject<String>("")
   private cartSource: BehaviorSubject<CarritoC> = new BehaviorSubject<CarritoC>({nombre_producto:'',precio:0,descripcion_producto:''})
   currentLogin = this.loginSource.asObservable();
-  private lista: Array<CarritoC>;
-  constructor() {
-    this.lista=[];
+
+  url_apiCourrier='https://jsonplaceholder.typicode.com/users'
+
+  constructor(private http:HttpClient) {
+    
+
    }
 
-  get getsharingObservableCart(){
-    return this.cartSource.asObservable();
-  }
+    getEstatus(): Observable<any>{
+      return this.http.get(this.url_apiCourrier )
+    }
+  
 
-  set CurrentCart(currentCart: CarritoC){
-    this.lista.push(currentCart)
-    this.cartSource.next(currentCart)
-  }
 
   get sharingObservable(){
     return this.currentLogin;

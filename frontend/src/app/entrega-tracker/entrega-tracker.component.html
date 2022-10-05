@@ -6,10 +6,10 @@
             <div class="contenedor-detalles">
                 <div class="detalles">
                     <h1>Trac<span>king</span></h1>
-                    <div class="input-tracker">
+                    <div class="input-tracker" [formGroup]="formGroup">
                         <label>Código de Rastreo:</label>
-                        <input type="text">
-                        <a href="/"><button class="bn632-hover bn22">Buscar Pedido</button></a>
+                        <input type="text" formControlName="id_compra">
+                        <a (click)="consulta()"><button class="bn632-hover bn22">Buscar Pedido</button></a>
                     </div>
                 </div>
             </div>

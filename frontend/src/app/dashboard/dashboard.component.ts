@@ -6,6 +6,7 @@ import { Producto } from '../modelos/Producto';
 import { Rol } from '../modelos/Rol';
 import { BackendService } from '../services/backend.service';
 import { Cliente } from '../modelos/Cliente';
+import { ShareService } from '../services/share.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
   displayedColumns =['codigo_producto', 'precio', 'nombre_producto', 'cantidad_bodega', 'descripcion_producto', 'imagen','eliminar']
   displayedColumns2 =['id_cliente', 'nombre']
   displayedColumns3 =['id_cliente', 'nombre','correo','tipo_usuario','eliminar']
-  constructor(private router:Router,private backend: BackendService, private fb:FormBuilder) {
+  constructor(private router:Router,private backend: BackendService, private fb:FormBuilder, private share:ShareService) {
     this.formGroup =this.fb.group({
       precio:0,
       nombre_producto:'',
@@ -45,6 +46,12 @@ export class DashboardComponent implements OnInit {
 
     this.backend.obtenerClienteyRol().subscribe(x => {
       this.dataSource3.data =x.data
+    })
+
+    this.share.currentLogin.subscribe(x => {
+      if(x == ""){
+        this.router.navigateByUrl("/inicio");
+      }
     })
   }
 
@@ -107,6 +114,12 @@ export class DashboardComponent implements OnInit {
         this.dataSource.data =x.data;
       })
      });
+  }
+
+  mover6(){
+    localStorage.setItem("token", "")
+    this.share.changeLogin("");
+
   }
 
 }

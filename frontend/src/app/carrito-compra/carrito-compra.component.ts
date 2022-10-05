@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarritoC, ShareService } from '../services/share.service';
@@ -9,9 +9,14 @@ import { CarritoC, ShareService } from '../services/share.service';
   styleUrls: ['./carrito-compra.component.scss']
 })
 export class CarritoCompraComponent implements OnInit {
-  data$:Observable<CarritoC>
+
+
+  @Input() nombre_producto: string ="";
+  @Input() precio:number=0;
+  @Input() descripcion_producto:string="";
+
   constructor(private route: Router, private share:ShareService) {
-    this.data$ =share.getsharingObservableCart;
+    
   }
 
   ngOnInit(): void {

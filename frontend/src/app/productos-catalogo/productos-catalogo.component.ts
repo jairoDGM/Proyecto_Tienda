@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { CarritoCompraComponent } from '../carrito-compra/carrito-compra.component';
+import { Carrito } from '../modelos/Carrito';
 import { Producto } from '../modelos/Producto';
 import { BackendService } from '../services/backend.service';
 import {  ShareService } from '../services/share.service';
@@ -13,6 +15,10 @@ import {  ShareService } from '../services/share.service';
   styleUrls: ['./productos-catalogo.component.scss']
 })
 export class ProductosCatalogoComponent implements OnInit {
+  nombre_producto: string='';
+  precio: number=0;
+  descripcion_producto: string ='';
+  arrayCarrito: Array<Carrito>=[]
 
   dataSource = new MatTableDataSource(new Array<Producto>);
   displayedColumns =[ 'nombre_producto','precio', 'descripcion_producto', 'imagen','eliminar']
@@ -31,8 +37,9 @@ export class ProductosCatalogoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  enviarCarrito(nombre_producto:string, precio:number, descripcion_producto:string){ 
-    this.share.CurrentCart = ({nombre_producto: nombre_producto, precio:precio, descripcion_producto:descripcion_producto})
+  enviarCarrito(nombre_producto:string,precio:number,descripcion_producto:string){ 
+    alert('Se Ingreso el Producto al Carrito')
+    this.arrayCarrito.push(new Carrito(nombre_producto,precio,descripcion_producto))
       
     
   }

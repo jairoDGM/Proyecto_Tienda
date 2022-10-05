@@ -27,6 +27,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
+import { ListadoComponent } from './listado/listado.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MatCardModule} from '@angular/material/card';
     ProductosCatalogoComponent,
     RegistroComponent,
     LandingPageComponent,
-    InformacionComponent
+    InformacionComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

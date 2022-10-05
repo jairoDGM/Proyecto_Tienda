@@ -6,6 +6,7 @@ import { EntregaTrackerComponent } from './entrega-tracker/entrega-tracker.compo
 import { InformacionComponent } from './informacion/informacion.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ListadoComponent } from './listado/listado.component';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PagoFormularioComponent } from './pago-formulario/pago-formulario.component';
 import { ProductosCatalogoComponent } from './productos-catalogo/productos-catalogo.component';
@@ -13,6 +14,7 @@ import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {path:"inicio",component:InicioComponent},
+  {path:"listado",component:ListadoComponent},
   {path:"registro",component:RegistroComponent},
   {path:"productos-catalogo",component:ProductosCatalogoComponent},
   {path:"pago-formulario",component:PagoFormularioComponent},

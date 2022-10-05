@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../modelos/LoginRequest';
@@ -6,11 +6,11 @@ import { BackendService } from '../services/backend.service';
 import { ShareService } from '../services/share.service';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.scss']
+  selector: 'app-listado',
+  templateUrl: './listado.component.html',
+  styleUrls: ['./listado.component.scss']
 })
-export class InicioComponent implements OnInit {
+export class ListadoComponent implements OnInit {
   formGroup: FormGroup = new FormGroup({});
   constructor(private router:Router, private backend:BackendService, private fb: FormBuilder, private share:ShareService) { }
 
@@ -32,7 +32,7 @@ export class InicioComponent implements OnInit {
       if(typeof(Storage) !== 'undefined'){
         localStorage.setItem('token',x.key);
         this.share.changeLogin(this.formGroup.controls['correo'].value)
-        this.router.navigateByUrl("/landing-page");
+        this.router.navigateByUrl("/dashboard");
       }else{
         alert("Su navegador no soporta localStorage")
       }
@@ -40,14 +40,7 @@ export class InicioComponent implements OnInit {
   }
 
   moverse(){
-    this.router.navigateByUrl("/registro");
+    this.router.navigateByUrl("/landing-page");
   }
-
-  moverse2(){
-    this.router.navigateByUrl("/listado");
-
-  }
-
-  
 
 }

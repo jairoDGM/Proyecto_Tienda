@@ -4,7 +4,7 @@
             <span><img src="../../assets/img/LOGIN.png" alt="" srcset="" width="500" height="500"></span>
         </div>
         <div class="formulario" [formGroup]="formGroup">
-            <h1>Inicio Sesion</h1>
+            <h1>Inicio Administrador</h1>
             <form action="">
                 <span>Ingrese su correo:</span>
                 <input type='text' formControlName="correo">
@@ -15,11 +15,8 @@
                 </span>
             </form>
             <button class="bn5" (click)="login()">Iniciar Sesion</button>
-
-            <p>No tiene una cuenta? <a (click)="moverse()">Registrese</a></p>
+            <br>
+            <button class="botoncito" (click)="moverse()">Regresar a Login Principal</button>
         </div>
-    </div>
-    <div class="footer">
-        <img width="100px" height="100px" src="../../assets/img/logonegro.png" alt="" srcset="" (click)="moverse2()">
     </div>
 </body>
