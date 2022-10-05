@@ -57,7 +57,13 @@ CREATE TABLE carrito(
 	codigo_producto integer,
 	cantidad_producto integer,
 	fecha_compra date,
-	PRIMARY KEY (id_cliente,codigo_producto),
+	PRIMARY KEY (id_cliente,codigo_producto,fecha_compra),
 	FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
 	FOREIGN KEY (codigo_producto) REFERENCES productos(codigo_producto)
 );
+
+
+
+--insert de datos basicos necesarios
+INSERT INTO rol (`tipo_usuario`) VALUES ('admin');
+INSERT INTO rol (`tipo_usuario`) VALUES ('cliente');
