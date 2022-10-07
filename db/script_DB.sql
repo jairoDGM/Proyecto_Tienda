@@ -1,7 +1,7 @@
 CREATE DATABASE db_tienda_ct;
 USE db_tienda_ct;
 
---tablas de las entidades
+
 	CREATE TABLE clientes(
 		id_cliente integer NOT NULL AUTO_INCREMENT,
 		nombre char(50),
@@ -27,10 +27,11 @@ USE db_tienda_ct;
 	);
 
 	CREATE TABLE compra(
-		id_compra integer,
+		id_compra integer NOT NULL AUTO_INCREMENT,
 		nombre_courrier char(50),
 		compania_tarjeta char(50),
 		estado integer,
+		total_pagar float,
 		PRIMARY KEY (id_compra)
 	);
 
@@ -52,18 +53,13 @@ CREATE TABLE compra_cliente(
 );
 
 CREATE TABLE carrito(
-	id_compra integer NOT NULL AUTO_INCREMENT,
 	id_cliente integer,
-	cantidad_producto integer,
-	total_pagar float,
 	codigo_producto integer,
-	PRIMARY KEY (id_compra,id_cliente,codigo_producto),
-	FOREIGN KEY (id_cliente,id_compra) REFERENCES compra_cliente(id_cliente,id_compra),
+	cantidad_producto integer,
+	PRIMARY KEY (id_cliente,codigo_producto),
+	FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
 	FOREIGN KEY (codigo_producto) REFERENCES productos(codigo_producto)
 );
 
-
-
---insert de datos basicos necesarios
 INSERT INTO rol (`tipo_usuario`) VALUES ('admin');
 INSERT INTO rol (`tipo_usuario`) VALUES ('cliente');
