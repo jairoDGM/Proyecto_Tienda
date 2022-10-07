@@ -31,7 +31,6 @@ USE db_tienda_ct;
 		nombre_courrier char(50),
 		compania_tarjeta char(50),
 		estado integer,
-		total_pagar float,
 		PRIMARY KEY (id_compra)
 	);
 
@@ -53,12 +52,13 @@ CREATE TABLE compra_cliente(
 );
 
 CREATE TABLE carrito(
+	id_compra integer,
 	id_cliente integer,
-	codigo_producto integer,
 	cantidad_producto integer,
-	fecha_compra date,
-	PRIMARY KEY (id_cliente,codigo_producto,fecha_compra),
-	FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
+	total_pagar float,
+	codigo_producto integer,
+	PRIMARY KEY (id_compra,id_cliente,codigo_producto),
+	FOREIGN KEY (id_cliente,id_compra) REFERENCES compra_cliente,
 	FOREIGN KEY (codigo_producto) REFERENCES productos(codigo_producto)
 );
 
