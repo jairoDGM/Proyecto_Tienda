@@ -19,7 +19,6 @@ export class ShareService {
   private cartSource: BehaviorSubject<CarritoC> = new BehaviorSubject<CarritoC>({nombre_producto:'',precio:0,descripcion_producto:''})
   currentLogin = this.loginSource.asObservable();
 
-  url_apiCourrier='https://jsonplaceholder.typicode.com/users'
 
 
   constructor(private http:HttpClient) {
@@ -27,11 +26,11 @@ export class ShareService {
 
    }
 
-    getEstatus(url:string): Observable<any>{
+    getEstatus(url:string){
       return this.http.get(url)
     }
-  
 
+  
 
   get sharingObservable(){
     return this.currentLogin;
