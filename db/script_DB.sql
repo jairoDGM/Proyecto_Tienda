@@ -27,7 +27,7 @@ USE db_tienda_ct;
 	);
 
 	CREATE TABLE compra(
-		id_compra integer NOT NULL AUTO_INCREMENT,
+		id_compra integer,
 		nombre_courrier char(50),
 		compania_tarjeta char(50),
 		estado integer,
@@ -52,7 +52,7 @@ CREATE TABLE compra_cliente(
 );
 
 CREATE TABLE carrito(
-	id_compra integer,
+	id_compra integer NOT NULL AUTO_INCREMENT,
 	id_cliente integer,
 	cantidad_producto integer,
 	total_pagar float,
