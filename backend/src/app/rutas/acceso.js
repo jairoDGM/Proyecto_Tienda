@@ -122,4 +122,17 @@ module.exports = (app) => {
         })
     })
 
+    app.get('/consultaCompra/:id_compra',(req,res) => {
+        const{id_compra} = req.params
+        let consulta = `SELECT nombre_courrier FROM compra WHERE id_compra = ${id_compra}`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el COURRIER correctamente", data: rows});
+            }
+        });
+    });
+
 }

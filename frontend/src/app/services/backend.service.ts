@@ -8,6 +8,8 @@ import { LoginRequest } from '../modelos/LoginRequest';
 import { LoginResponse } from '../modelos/LoginResponse';
 import { Producto } from '../modelos/Producto';
 import { ProductoResponse } from '../modelos/ProductoResponse';
+import { ResCourrier } from '../modelos/ResCourrier';
+import { ResCourrierResponse } from '../modelos/ResCourrierResponse';
 import { Rol } from '../modelos/Rol';
 import { RolResponse } from '../modelos/RolResponse';
 
@@ -65,4 +67,9 @@ export class BackendService {
     console.log(login)
     return this.httpClient.post<LoginResponse>(BE_API + '/login',login, httpOptions);
   }
+
+  obtenerCourrier(id_courrier:string){
+    return this.httpClient.get<ResCourrierResponse>(BE_API + '/consultaCompra/' + id_courrier, httpOptions);
+  }
+
 }

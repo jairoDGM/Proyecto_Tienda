@@ -21,13 +21,14 @@ export class ShareService {
 
   url_apiCourrier='https://jsonplaceholder.typicode.com/users'
 
+
   constructor(private http:HttpClient) {
     
 
    }
 
-    getEstatus(): Observable<any>{
-      return this.http.get(this.url_apiCourrier )
+    getEstatus(url:string): Observable<any>{
+      return this.http.get(url)
     }
   
 
