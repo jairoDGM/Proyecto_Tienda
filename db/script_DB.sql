@@ -58,7 +58,7 @@ CREATE TABLE carrito(
 	total_pagar float,
 	codigo_producto integer,
 	PRIMARY KEY (id_compra,id_cliente,codigo_producto),
-	FOREIGN KEY (id_cliente,id_compra) REFERENCES compra_cliente,
+	FOREIGN KEY (id_cliente,id_compra) REFERENCES compra_cliente(id_cliente,id_compra),
 	FOREIGN KEY (codigo_producto) REFERENCES productos(codigo_producto)
 );
 
