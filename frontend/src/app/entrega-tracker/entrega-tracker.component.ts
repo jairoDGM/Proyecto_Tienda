@@ -39,31 +39,36 @@ export class EntregaTrackerComponent implements OnInit {
       alert(x.mensaje)
       this.arrayCourrier=x.data;
       console.log(this.arrayCourrier)
+//Vemos si hay un id_compra 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
       if(this.arrayCourrier.length > 0){
         //Verificamos el courrier del numero de orden y dependiendo el COURRIER se manda a solicitar los datos a su respectivo link
         for(let item of this.arrayCourrier){
           const itemMinuscula = (item.nombre_courrier).toLowerCase()
           console.log('El item es:'+ itemMinuscula)
           //IF PARA VER SI ES GALIEX
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
           if(itemMinuscula === 'galiex'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
-            //const url_apiGaliex1='../../assets/Pruebas/status.json'
-            const url_apiGaliex1='https://reqres.in/api/users/2' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
+            const url_apiGaliex1='../../assets/Pruebas/status.json'
+            //const url_apiGaliex1='https://reqres.in/api/users/2' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
             this.share.getEstatus(url_apiGaliex1).subscribe(x => {
               console.log(x)
               this.arrayConsulta=x
             })
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
           //IF PARA VER SI ES Y&J EXPRESS
           }else if(itemMinuscula === 'y&j express'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
             const url_apiYJ1='../../assets/Pruebas/status2.json'
-            //const url_apiYJ1='https://jsonplaceholder.typicode.com/users' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
+            //const url_apiYJ1='URL COURRIER' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
             this.share.getEstatus(url_apiYJ1).subscribe(x => {
               console.log("Respuesta:"+ x)
               this.arrayConsulta=x
               //console.log(this.arrayConsulta.orden)
             })
           //IF PARA VER SI ES FORZA
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
           }else if(itemMinuscula === 'forza g'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
             const url_apiFORZA='../../assets/Pruebas/status3.json'
@@ -72,21 +77,22 @@ export class EntregaTrackerComponent implements OnInit {
               console.log(x)
               this.arrayConsulta=x
             })
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
           //IF PARA VER SI ES RGX
           }else if(itemMinuscula === 'rgx'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
-            const url_apiRGX='../../assets/Pruebas/status4.json'
-            //const url_apiRGX1='https://jsonplaceholder.typicode.com/users' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
-            this.share.getEstatus(url_apiRGX).subscribe(x => {
+            //const url_apiRGX='../../assets/Pruebas/status4.json'
+            const url_apiRGX1='http://rutasguatemaltecasexpress.com' + "/status.php?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
+            this.share.getEstatus(url_apiRGX1).subscribe(x => {
               console.log(x)
               this.arrayConsulta=x
             })
           }
         }
     //FIN DEL FOR
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
       }else{
-        alert('no hay nada en el array')
-        
+        alert('NO SE ENCONTRO EL ID COMPRA REGISTRADO')
       }
     })
   //FIN DE LA FUNCION

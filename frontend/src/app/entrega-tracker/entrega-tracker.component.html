@@ -20,60 +20,67 @@
             <div class="imagen1">
                 <img src="../../assets/img/imagen1.png" alt="" srcset="">
                 Pendiente de Recolectar: <br>
-                <span *ngIf="arrayConsulta.orden.estatus == '1'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '2'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '3'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '4'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '5'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '1'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '2'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '3'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '4'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '5'" class="checked material-symbols-outlined">done_all</span>
             </div>
             <div class="imagen2">
                 <img src="../../assets/img/imagen2.png" alt="" srcset="">
                 Recolectado: <br>
-                <span *ngIf="arrayConsulta.orden.estatus == '2'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '3'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '4'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '5'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '2'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '3'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '4'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '5'" class="checked material-symbols-outlined">done_all</span>
             </div>
             <div class="imagen3">
                 <img src="../../assets/img/imagen3.png" alt="" srcset="">
                 Almacenado: <br>
-                <span *ngIf="arrayConsulta.orden.estatus == '3'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '4'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '5'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '3'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '4'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '5'" class="checked material-symbols-outlined">done_all</span>
 
             </div>
             <div class="imagen4">
                 <img src="../../assets/img/imagen4.png" alt="" srcset="">
                 Ruta Entrega/Bodega: <br>
-                <span *ngIf="arrayConsulta.orden.estatus == '4'" class="checked material-symbols-outlined">done_all</span>
-                <span *ngIf="arrayConsulta.orden.estatus == '5'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '4'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '5'" class="checked material-symbols-outlined">done_all</span>
             </div>
             <div class="imagen5">
                 <img src="../../assets/img/imagen5.png" alt="" srcset="">
                 Entregado:  <br>
-                <span *ngIf="arrayConsulta.orden.estatus == '5'" class="checked material-symbols-outlined">done_all</span>
+                <span *ngIf="arrayConsulta.orden.status == '5'" class="checked material-symbols-outlined">done_all</span>
             </div>
         </div>
 
         <div class="verificar_pedido" *ngIf="numero_compra !=0">
             <h1>Su numero de orden es la: {{numero_compra}}</h1>
-            <div *ngFor="let item of arrayCourrier">
+            <!--<div *ngFor="let item of arrayCourrier">
                 <h1>Su Courrier es: {{item.nombre_courrier}}</h1>
+            </div>-->
+            <div *ngIf="arrayConsulta.orden.courrier">
+                Se Solicito a : {{arrayConsulta.orden.courrier}}
+                <br>
             </div>
-            
-            <div *ngIf="arrayConsulta.orden.estatus == 1">
+            <br>
+            <div *ngIf="arrayConsulta.orden.status == 0">
+                Estado: No hay Pedidos solicitados
+            </div>
+            <div *ngIf="arrayConsulta.orden.status == 1">
                 Estado: Pendiente de Recolectar
             </div>
-            <div *ngIf="arrayConsulta.orden.estatus == 2">
+            <div *ngIf="arrayConsulta.orden.status == 2">
                 Estado: Recolectado
             </div>
-            <div *ngIf="arrayConsulta.orden.estatus == 3">
+            <div *ngIf="arrayConsulta.orden.status == 3">
                 Estado: Almacenado
             </div>
-            <div *ngIf="arrayConsulta.orden.estatus == 4">
+            <div *ngIf="arrayConsulta.orden.status == 4">
                 Estado: Ruta Entrega/Bodega
             </div>
-            <div *ngIf="arrayConsulta.orden.estatus == 5">
+            <div *ngIf="arrayConsulta.orden.status == 5">
                 Estado: Entregado
             </div>
         </div>
