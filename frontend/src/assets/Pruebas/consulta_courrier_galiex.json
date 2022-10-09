@@ -1,0 +1,8 @@
+{ "consultaprecio":
+    {
+        "courrier":"galiex",
+        "destino":"aca va el destino",
+        "cobertura":"false",
+        "costo":"150.00"
+    }
+}

@@ -1,0 +1,8 @@
+{ "consultaprecio":
+    {
+        "courrier":"rgx",
+        "destino":"aca va el destino",
+        "cobertura":"false",
+        "costo":"50.00"
+    }
+}

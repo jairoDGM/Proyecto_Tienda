@@ -1,0 +1,8 @@
+{"autorizacion":
+    {
+        "emisor":"MasterCard",
+        "tarjeta":"222222",
+        "status":"0",
+        "numero":"000"
+    }
+}

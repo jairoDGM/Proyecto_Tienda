@@ -6,22 +6,24 @@
                 <h1 style="color: white;">DETALLES FACTURACION</h1><br>
                 <div id="contenido1">
                     <label for="nombre_respuesta">Nombre</label>
-                    <p class="respuestas">nombre cliente</p><br>
+                    <p class="factura_respuesta">{{nombre}}</p><br>
     
                     <label for="correo_respuesta">Correo Electronico</label>
-                    <p class="respuestas">{{(correo$ | async)}}</p><br>
+                    <p class="factura_respuesta">{{(correo$ | async)}}</p><br>
     
                     <label for="Direccion_envio">Direccion Domicilio</label>
-                    <p class="respuesta_interna">Direccion de shipping</p>
+                    <p class="factura_respuesta">{{direccion}}</p>
     
                     <label for="tarjeta_asociada">Detalles tarjeta</label>
-                    <P class="respuesta_interna" style="margin: 0%;">Empresa de tarjeta</P>
-                    <p class="respuesta_interna">Numero Tarjeta</p>
+                    <P class="factura_respuesta" style="margin: 0%;">{{respuestas_tarjeta.emisor}}</P><br>
+                    
+                    <label for="Destinatario">Destinatario del envio</label>
+                    <p class="factura_respuesta">{{destinatario}}</p>
     
                     <h2>Compras</h2>
-                    <p class="respuesta_factura1">Total: Q100.00</p>
+                    <p class="respuesta_factura1">Total: Q{{monto}}</p>
                     <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
-                        <button  class="bn5" style="width: 70%; margin-top: 2%;">Pagar</button>
+                        <button (click)="proceder()" class="bn5" style="width: 70%; margin-top: 2%;">Proceder</button>
                     </div>
                 </div>
             </div>
@@ -47,35 +49,34 @@
                             <h1>TARJETA PAGO</h1>
                             <!--input de nombre-->
                             <label class="label">Nombre:</label>
-                            <input type="text" placeholder="Ingrese un solo nombre" >
+                            <input type="text" placeholder="Ingrese un solo nombre" formControlName="nombre">
         
                             <!--input de numero-->
                             <label class="label"># Tarjeta:</label>
-                            <input type="number" placeholder="Ingrese el numero de su tarjeta" >
+                            <input type="number" placeholder="Ingrese el numero de su tarjeta" formControlName="tarjeta">
         
                             <!--input de vencimiento-->
                             <label class="label">Fecha Vencimiento:</label>
-                            <input type="date" >
+                            <input type="date" formControlName="date_venc">
         
                             <!--input de codigo-->
                             <label class="label">Codigo Seguridad:</label>
-                            <input type="number" placeholder="ingrese el codigo de seguridad" >
+                            <input type="number" placeholder="ingrese el codigo de seguridad" formControlName="codigo">
         
                             <label class="label">Emisor de Tarjeta:</label>
-                            <select ngfor>
-                                <option>VISA</option>
-                                <option>MASTERCARD</option>
-                                <option>AMERICAN EXPRESS</option>
-                                <option>DINNER CLUB</option>
-                            </select>
+                            <mat-radio-group aria-label="Select an option" formControlName="url_tarjeta" style="background-color: gray;">
+                                <mat-radio-button  value="../../assets/Pruebas/consulta_tarjeta_visa.json">VISA</mat-radio-button><br>
+                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_dinersclub.json">Diners Club</mat-radio-button><br>
+                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_mastercard.json">Mastercard</mat-radio-button><br>
+                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_americanExpress.json">American Express</mat-radio-button>
+                            </mat-radio-group>
         
                             
-                            <h3 id="respuesta_tarjeta1">ESTADO: APROBADA</h3>
-                            <h3 id="respuesta_tarjeta2"># AUTORIZACION: 88239423</h3>
+                            <h3 id="respuesta_tarjeta1">ESTADO:{{respuestas_tarjeta.status}}</h3>
+                            <h3 id="respuesta_tarjeta2"># AUTORIZACION:{{respuestas_tarjeta.numero}}</h3>
                         </div>
                         <div class="botones"style="display: flex; align-items: center; flex-direction: column; margin:2%;">
-                            <button  class="bn5" style="margin-bottom: 2%;">Verificar Tarjeta</button>
-                            <button  class="bn5" style="margin-bottom: 2%;">Aceptar</button>
+                            <button  (click)="pagar_tarjeta()" class="bn5" style="margin-bottom: 2%;">Pagar</button>
                         </div>
                     </div>
     
@@ -89,24 +90,29 @@
                             <!--input de codigo postal-->
                             <label class="label" style="color: white;">Codigo Postal:</label>
                             <input type="text" placeholder="Ingrese su codigo postal" formControlName="destino">
+
+                            <!--input de destinatario-->
+                            <label class="label" style="color: white;">Destinatario:</label>
+                            <input type="text" placeholder="Ingrese a quien va el envio" formControlName="destinatario">
         
                             <label class="label" style="color: white;">Empresas de Envio:</label>
-                            <mat-radio-group aria-label="Select an option" formControlName="url">
-                                <mat-radio-button  value="https://reqres.in/api/users/2" >GLAIEX</mat-radio-button><br>
-                                <mat-radio-button value="soy cliente">Y&J EXPRESS</mat-radio-button><br>
-                                <mat-radio-button value="soy cliente">FORZA G</mat-radio-button><br>
-                                <mat-radio-button value="soy cliente">RGX</mat-radio-button>
+                            <mat-radio-group aria-label="Select an option" formControlName="url_courrier">
+                                <mat-radio-button  value="../../assets/Pruebas/consulta_courrier_galiex.json" >GALIEX</mat-radio-button><br>
+                                <mat-radio-button value="../../assets/Pruebas/consulta_courrier_YyJ.json">Y&J EXPRESS</mat-radio-button><br>
+                                <mat-radio-button value="http://forzagcourrier.herokuapp.com/consulta.php?">Forza G</mat-radio-button><br>
+                                <mat-radio-button value="http://rutasguatemaltecasexpress.com/consulta.php?">RGX</mat-radio-button>
                             </mat-radio-group>
                             <br>
-                            <label>Costo:</label>
+                            <label>Costo del Envio:</label>
                             <div>
-                                <h3 id="courrier_respuesta_costo" style="color: white;">{{respuestas_courrier.email}}</h3>
+                                <h3 id="courrier_respuesta_empresa" style="color: white;">{{respuestas_courrier.courrier}}</h3>
+                                <h3 id="courrier_respuesta_costo" style="color: white;">Q{{respuestas_courrier.costo}}</h3>
+                                <h3 id="courrier_respuesta_cobertura" style="color: white;">{{respuestas_courrier.cobertura}}</h3>
                             </div>
                         </div>
                         
                         <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
                             <button (click)="cotizar_courrier()" class="bn5" style="width: 90%;">Cotizar Precio de envio</button><br>
-                            <button  class="bn5" style="width: 90%;">Aceptar Precio</button>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,7 @@ module.exports = (app) => {
         });
     });
 
+
     app.post('/registro_producto',(req,res) => {
         precio = parseFloat(req.body.precio);
         cantidad_bodega = parseInt(req.body.cantidad_bodega);
@@ -29,6 +30,7 @@ module.exports = (app) => {
         });
     });
 
+
     app.get('/registro_producto',(req,res) => {
         let consulta = `SELECT * FROM productos `;
         console.log(consulta);
@@ -40,6 +42,7 @@ module.exports = (app) => {
             }
         });
     });
+
 
     app.get('/registro_usuario_con_rol',(req,res) => {
         let consulta = `SELECT * FROM clientes INNER JOIN asignacion_rol ON clientes.id_cliente=asignacion_rol.id_cliente`;
@@ -53,6 +56,7 @@ module.exports = (app) => {
         });
     });
 
+
     app.get('/registro_usuario',(req,res) => {
         let consulta = `SELECT * FROM clientes `;
         console.log(consulta);
@@ -64,6 +68,7 @@ module.exports = (app) => {
             }
         });
     });
+
 
     app.post('/registro_Rol',(req,res) => {
         id_cliente = parseInt(req.body.id_cliente);
@@ -77,6 +82,7 @@ module.exports = (app) => {
             }
         });
     });
+
 
     app.delete("/registro_usuario/:id_cliente",(req,res)=> {
         console.log(req.body);
@@ -92,6 +98,7 @@ module.exports = (app) => {
         });
     });
 
+
     app.delete("/registro_producto/:codigo_producto",(req,res)=> {
         console.log(req.body);
         const{codigo_producto} = req.params
@@ -105,6 +112,7 @@ module.exports = (app) => {
             }
         });
     });
+
 
     app.post('/login', (req,res)=>{
         let consulta = `SELECT * FROM clientes WHERE correo = '${req.body.correo}' AND contrasena = '${req.body.contrasena}' `;
@@ -122,6 +130,7 @@ module.exports = (app) => {
         })
     })
 
+
     app.get('/consultaCompra/:id_compra',(req,res) => {
         const{id_compra} = req.params
         let consulta = `SELECT nombre_courrier FROM compra WHERE id_compra = ${id_compra}`;
@@ -133,6 +142,63 @@ module.exports = (app) => {
                 res.json({status:1, mensaje: "Se obtuvo el COURRIER correctamente", data: rows});
             }
         });
+    });
+
+
+    app.get('/obtiene_id_cliente/:correo',(req,res) => {
+        let consulta = `SELECT id_cliente FROM clientes WHERE correo = '${req.params.correo}'`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla cliente"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el id_cliente correctamente", data: rows});
+            }
+        });
+    });
+
+    app.get('/obtiene_id_compra/:id_cliente',(req,res) => {
+        var id_cliente = parseInt(req.params.id_cliente); 
+        let consulta = `SELECT id_compra FROM compra_cliente WHERE id_cliente = ${id_cliente}`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla compra_cliente"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el id_compra correctamente", data: rows});
+            }
+        });
+    });
+
+
+    //TRANSACCION COMPRAS - PAGO FORMULARIO
+    app.post('/ingreso_pagoFormulario1',(req,res) => {
+        var total_pagar = parseFloat(req.body.monto);
+        var compra = parseInt(req.body.id_compra);
+        let consulta = `INSERT INTO compra (id_compra,nombre_courrier,compania_tarjeta,total_pagar) VALUES (${compra},'${req.body.nombre_courrier}','${req.body.compania_tarjeta}',${total_pagar})`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en compra"});
+            }else{
+                res.json({status:1, mensaje: "Insercion de datos en tabla compra satisfactorio", data: []});
+            }
+        });
+    });
+
+    //TRASACCION COMPRA_CLIENTES - PAGO FORMULARIO
+    app.post('/ingreso_pagoFormulario2:id_cliente',(req,res) => {
+        var cliente = parseInt(req.body.id_cliente);
+        let consulta = `INSERT INTO compra_cliente (id_cliente) VALUES (${cliente})`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en compra_cliente"});
+            }else{
+                res.json({status:1, mensaje: "Insercion de datos en tabla compra_cliente satisfactorio", data: []});
+            }
+        });
+
     });
 
 }

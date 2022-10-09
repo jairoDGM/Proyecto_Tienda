@@ -10,7 +10,6 @@ export class Cliente{
         this.fecha=fecha;
         this.contrasena=contrasena;
         this.correo=correo;
-
     }
 
 }

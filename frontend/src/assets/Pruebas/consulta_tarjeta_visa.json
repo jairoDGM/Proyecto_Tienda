@@ -1,0 +1,8 @@
+{"autorizacion":
+    {
+        "emisor":"Visa",
+        "tarjeta":"222222",
+        "status":"0",
+        "numero":"000"
+    }
+}

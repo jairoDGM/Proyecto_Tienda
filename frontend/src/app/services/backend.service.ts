@@ -6,9 +6,10 @@ import { ClienteResponse } from '../modelos/ClienteResponse';
 import { ClienteResponseDel } from '../modelos/ClienteResponseDel';
 import { LoginRequest } from '../modelos/LoginRequest';
 import { LoginResponse } from '../modelos/LoginResponse';
+import { pagoformulario } from '../modelos/pagoFormulario';
+import { pagoFormularioResponse } from '../modelos/pagoFormularioResponse';
 import { Producto } from '../modelos/Producto';
 import { ProductoResponse } from '../modelos/ProductoResponse';
-import { ResCourrier } from '../modelos/ResCourrier';
 import { ResCourrierResponse } from '../modelos/ResCourrierResponse';
 import { Rol } from '../modelos/Rol';
 import { RolResponse } from '../modelos/RolResponse';
@@ -71,5 +72,26 @@ export class BackendService {
   obtenerCourrier(id_courrier:string){
     return this.httpClient.get<ResCourrierResponse>(BE_API + '/consultaCompra/' + id_courrier, httpOptions);
   }
+
+  insertarPagoFormulario1(pagoformulario: pagoformulario){
+    console.log(BE_API + '/ingreso_pagoFormulario1')
+    console.log(pagoformulario)
+    return this.httpClient.post<pagoFormularioResponse>(BE_API + '/ingreso_pagoFormulario1', pagoformulario,httpOptions);
+  }
+
+  insertarPagoFormulario2(id_cliente:number){
+    console.log(BE_API + '/ingreso_pagoFormulario2')
+    console.log(pagoformulario)
+    return this.httpClient.post(BE_API + '/ingreso_pagoFormulario2/'+ id_cliente,httpOptions);
+  }
+
+  obtieneIdCliente(correo:string){
+    return this.httpClient.get(BE_API + '/obtiene_id_cliente/' + correo, httpOptions);
+  }
+
+  obtieneIdCompra(id_cliente:number){
+    return this.httpClient.get(BE_API + '/obtiene_id_compra/' + id_cliente, httpOptions);
+  }
+  
 
 }

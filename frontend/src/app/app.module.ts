@@ -30,6 +30,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ListadoComponent } from './listado/listado.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -32,6 +32,7 @@ export class InicioComponent implements OnInit {
       if(typeof(Storage) !== 'undefined'){
         localStorage.setItem('token',x.key);
         this.share.changeLogin(this.formGroup.controls['correo'].value)
+        this.share.changeLogin1(this.formGroup.controls['correo'].value)
         this.router.navigateByUrl("/landing-page");
       }else{
         alert("Su navegador no soporta localStorage")
