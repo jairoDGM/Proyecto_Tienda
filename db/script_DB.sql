@@ -27,10 +27,9 @@ USE db_tienda_ct;
 	);
 
 	CREATE TABLE compra(
-		id_compra integer NOT NULL AUTO_INCREMENT,
+		id_compra integer,
 		nombre_courrier char(50),
 		compania_tarjeta char(50),
-		estado integer,
 		total_pagar float,
 		PRIMARY KEY (id_compra)
 	);
@@ -46,7 +45,7 @@ CREATE TABLE asignacion_rol(
 
 CREATE TABLE compra_cliente(
 	id_cliente integer,
-	id_compra integer,
+	id_compra integer NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (id_cliente,id_compra),
 	FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
 	FOREIGN KEY (id_compra) REFERENCES compra(id_compra)
