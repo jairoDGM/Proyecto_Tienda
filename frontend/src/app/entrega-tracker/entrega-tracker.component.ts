@@ -71,9 +71,9 @@ export class EntregaTrackerComponent implements OnInit {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
           }else if(itemMinuscula === 'forza g'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
-            const url_apiFORZA='../../assets/Pruebas/status3.json'
-            //const url_apiFORZA1='https://jsonplaceholder.typicode.com/users' + "/status?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
-            this.share.getEstatus(url_apiFORZA).subscribe(x => {
+            //const url_apiFORZA='../../assets/Pruebas/status3.json'
+            const url_apiFORZA1='http://forzagcourrier.herokuapp.com' + "/status.php?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
+            this.share.getEstatus(url_apiFORZA1).subscribe(x => {
               console.log(x)
               this.arrayConsulta=x
             })

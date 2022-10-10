@@ -4,6 +4,9 @@ import { environment } from 'src/environments/environment';
 import { Cliente } from '../modelos/Cliente';
 import { ClienteResponse } from '../modelos/ClienteResponse';
 import { ClienteResponseDel } from '../modelos/ClienteResponseDel';
+import { ClienteResResponse } from '../modelos/ClienteResResponse';
+import { CompraRes } from '../modelos/CompraRes';
+import { CompraResResponse } from '../modelos/CompraResResponse';
 import { LoginRequest } from '../modelos/LoginRequest';
 import { LoginResponse } from '../modelos/LoginResponse';
 import { pagoformulario } from '../modelos/pagoFormulario';
@@ -79,18 +82,22 @@ export class BackendService {
     return this.httpClient.post<pagoFormularioResponse>(BE_API + '/ingreso_pagoFormulario1', pagoformulario,httpOptions);
   }
 
-  insertarPagoFormulario2(id_cliente:number){
+  insertarPagoFormulario2(form: CompraRes){
     console.log(BE_API + '/ingreso_pagoFormulario2')
-    console.log(pagoformulario)
-    return this.httpClient.post(BE_API + '/ingreso_pagoFormulario2/'+ id_cliente,httpOptions);
+    console.log(form)
+    return this.httpClient.post<CompraResResponse>(BE_API + '/ingreso_pagoFormulario2', form ,httpOptions);
   }
 
   obtieneIdCliente(correo:string){
-    return this.httpClient.get(BE_API + '/obtiene_id_cliente/' + correo, httpOptions);
+    return this.httpClient.get<ClienteResResponse>(BE_API + '/obtiene_id_cliente/' + correo, httpOptions);
   }
 
   obtieneIdCompra(id_cliente:number){
-    return this.httpClient.get(BE_API + '/obtiene_id_compra/' + id_cliente, httpOptions);
+    return this.httpClient.get<CompraResResponse>(BE_API + '/obtiene_id_compra/' + id_cliente, httpOptions);
+  }
+
+  verificarIdCompra(id_compra:number){
+    return this.httpClient.get<pagoFormularioResponse>(BE_API + '/consultarIdCompra/' + id_compra, httpOptions);
   }
   
 

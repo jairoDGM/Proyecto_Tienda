@@ -170,26 +170,40 @@ module.exports = (app) => {
         });
     });
 
+    app.get('/consultarIdCompra/:id_compra',(req,res) => {
+        var id_compra = parseInt(req.params.id_compra); 
+        let consulta = `SELECT id_compra FROM compra WHERE id_compra = ${id_compra}`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla compra_cliente"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el id_compra correctamente", data: rows});
+            }
+        });
+    });
+
 
     //TRANSACCION COMPRAS - PAGO FORMULARIO
     app.post('/ingreso_pagoFormulario1',(req,res) => {
-        var total_pagar = parseFloat(req.body.monto);
-        var compra = parseInt(req.body.id_compra);
-        let consulta = `INSERT INTO compra (id_compra,nombre_courrier,compania_tarjeta,total_pagar) VALUES (${compra},'${req.body.nombre_courrier}','${req.body.compania_tarjeta}',${total_pagar})`;
+        var total_pagar = parseFloat(req.body.total_pagar);
+        var id_compra = parseInt(req.body.id_compra);
+        let consulta = `INSERT INTO compra (id_compra,nombre_courrier,compania_tarjeta,total_pagar) VALUES (${req.body.id_compra},'${req.body.nombre_courrier}','${req.body.compania_tarjeta}',${total_pagar})`;
         console.log(consulta);
         conn.query(consulta, (err,rows,cols)=>{
             if(err){
                 res.json({status:0, mensaje:"Error en compra"});
             }else{
-                res.json({status:1, mensaje: "Insercion de datos en tabla compra satisfactorio", data: []});
+                res.json({status:1, mensaje: "Insercion de datos en tabla compra satisfactorio", data: rows});
             }
         });
     });
 
     //TRASACCION COMPRA_CLIENTES - PAGO FORMULARIO
-    app.post('/ingreso_pagoFormulario2:id_cliente',(req,res) => {
-        var cliente = parseInt(req.body.id_cliente);
-        let consulta = `INSERT INTO compra_cliente (id_cliente) VALUES (${cliente})`;
+    app.post('/ingreso_pagoFormulario2',(req,res) => {
+        var id_cliente = parseInt(req.body.id_cliente);
+        var id_compra = parseInt(req.body.id_compra);
+        let consulta = `INSERT INTO compra_cliente (id_cliente, id_compra) VALUES (${id_cliente}, ${id_compra})`;
         console.log(consulta);
         conn.query(consulta, (err,rows,cols)=>{
             if(err){

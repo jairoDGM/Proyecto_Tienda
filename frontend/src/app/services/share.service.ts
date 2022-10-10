@@ -28,7 +28,7 @@ export class ShareService {
 
    }
 
-    getEstatus(url:string){
+  getEstatus(url:string){
       return this.http.get(url)
     }
 

@@ -3,10 +3,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CourrierCService } from '../services/courrier-c.service';
 import { ShareService } from '../services/share.service';
-import { Observable } from 'rxjs';
+import { ignoreElements, Observable } from 'rxjs';
 import { BackendService } from '../services/backend.service';
 import { pagoformulario } from '../modelos/pagoFormulario';
 import { TarjetaService } from '../services/tarjeta.service';
+import { Cliente } from '../modelos/Cliente';
+import { ClienteRes } from '../modelos/ClienteRes';
+import { CompraRes } from '../modelos/CompraRes';
+import { CompraRes2 } from '../modelos/ComprasRes2';
 
 
 @Component({
@@ -26,16 +30,22 @@ export class PagoFormularioComponent implements OnInit {
   compania_tarjeta="";//
   id_compra=0;
   //variables para modelo
-
   direccion="";//
   nombre="";//
   estado_tarjeta="";//
   numero_autorizacion=0;//
-  monto=0;//me lo envian, faltaa sacarlo
+  total_pagar=0;//me lo envian, faltaa sacarlo
   destinatario="";//
   total=0;
   correo_actual="";
   listado = new Array<pagoformulario>();
+
+
+  //Arrays Declarados y variables 
+  arrayCliente: Array<ClienteRes>=[];
+  arrayCompra: Array<CompraRes> = [];
+  arrayCompras: Array<pagoformulario> = [];
+  id_compra_ale = 0;
 
   constructor(private router:Router,private tarjetaservice:TarjetaService ,private courrierC: CourrierCService, private fb:FormBuilder, private share:ShareService, private backend:BackendService) { 
     this.correo$ = share.sharingObservable; //obtencion de correo para busqueda en DB
@@ -90,7 +100,6 @@ export class PagoFormularioComponent implements OnInit {
   }
 
 
-  
   cotizar_courrier(){
     //obtencion valores del html
     var postal = this.formGroup.controls['destino'].value;
@@ -99,7 +108,7 @@ export class PagoFormularioComponent implements OnInit {
     
     
     //construccion URL
-    var url_courrier = url+ "destino="+postal + "&formato=JSON";
+    var url_courrier = url+ '/consulta.php?' + "destino="+postal + "&formato=JSON";
     //construccion URL
     
     
@@ -131,56 +140,114 @@ export class PagoFormularioComponent implements OnInit {
   proceder(){
     var url = this.formGroup.controls['url_courrier'].value;
     var postal = this.formGroup.controls['destino'].value;
+    const dest = this.formGroup.controls['destinatario'].value;
     
     //consultas DB para id_cliente
     this.backend.obtieneIdCliente(this.correo_actual).subscribe(resp =>{
-      console.log(resp);
-      this.id_cliente = parseInt(resp.toString());
-    });
-    //consultas DB para id_cliente
+      console.log(resp.data);
+      this.arrayCliente = resp.data;
+      console.log(this.arrayCliente)
     
+
+    for(let actualID of this.arrayCliente){
+      console.log('Id Actual prueba 2:' + actualID.id_cliente)
+      //insertar en la tabla compras_cliente
+
+        this.id_compra_ale = Math.floor(Math.random() * 100);
+        this.backend.verificarIdCompra(this.id_compra_ale).subscribe(x => {
+          this.arrayCompras = x.data;
+          if(this.arrayCompras.length == 0){
+            let formulario = new pagoformulario(
+              this.nombre_courrier,
+              this.compania_tarjeta,
+              this.id_compra = this.id_compra_ale,
+              this.total_pagar
+            );
+            this.backend.insertarPagoFormulario1(formulario).subscribe(resp =>{
+              console.log(resp.data);
+              alert(resp.mensaje);
+              alert("su numero de compra es: " + this.id_compra_ale);
+            });
+
+            let form = new CompraRes(
+              actualID.id_cliente,
+              this.id_compra_ale
+            )
+
+            this.backend.insertarPagoFormulario2(form).subscribe(resp =>{
+              console.log(resp.data);
+            });
+
+            const url_courrier = url + '/envio?' + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion+"&tienda=CODOTECH";
+              this.courrierC.getPostCourrier(url_courrier).subscribe(x=>{
+                console.log(url_courrier);
+              });
+
+
+            //aca salgoo del buclee
+          }else{
+            this.id_compra_ale = Math.floor(Math.random() * 100);
+            let formulario = new pagoformulario(
+              this.nombre_courrier,
+              this.compania_tarjeta,
+              this.id_compra = this.id_compra_ale,
+              this.total_pagar
+            );
+            this.backend.insertarPagoFormulario1(formulario).subscribe(resp =>{
+              console.log(resp.data);
+              alert(resp.mensaje);
+
+              let form = new CompraRes(
+                actualID.id_cliente,
+                this.id_compra_ale
+              )
+
+              this.backend.insertarPagoFormulario2(form).subscribe(resp =>{
+                console.log(resp.data);
+              });
+
+              var url_courrier = url + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion;
+              this.courrierC.getConsulta(url_courrier).subscribe(x=>{
+                console.log(url_courrier);
+              });
+
+              alert("su numero de compra es: " + this.id_compra_ale);
+            });
+
+          
+          }
+        })
+
+      
+
+
+      
+    }
+  });
     
-    //inserccion en la tabla compras_cliente
-    this.backend.insertarPagoFormulario2(this.id_cliente).subscribe(resp =>{
-      console.log(resp);
-      alert(resp);
-    });
-    //inserccion en la tabla compras_cliente
 
-    //consultas DB para id_compra
-    this.backend.obtieneIdCompra(this.id_cliente).subscribe(resp =>{
-      console.log(resp);
-      this.id_compra = parseInt(resp.toString());
-    });
-    //consultas DB para id_compra
 
-    //construccion URL
-    var url_courrier = url+ "orden="+this.id_compra+"&destinatario="+this.destinatario +"&destino="+postal+"&direccion="+this.direccion;
-    //construccion URL
+/*this.backend.insertarPagoFormulario2(actualID.id_cliente).subscribe(resp =>{
+        console.log(resp);
+        alert(resp);
+        //consultas DB para id_compra
 
-    
-    //pedido a courriers
-    this.courrierC.getConsulta(url_courrier).subscribe(x=>{
+      }); */
+  
+
+    /*this.courrierC.getConsulta(url_courrier).subscribe(x=>{
       console.log(url_courrier);
-    });
+    });*/
     //pedido a courriers
     
-    let formulario = new pagoformulario(
-      this.nombre_courrier,
-      this.compania_tarjeta,
-      this.id_compra,
-      this.monto
-    );
-
-    //inserccion en la tabla compra
-    this.backend.insertarPagoFormulario1(formulario).subscribe(resp =>{
-      console.log(resp);
-      alert(resp);
-    });
-    //inserccion en la tabla compra
-
-    alert("su numero de compra es: " + this.id_compra);
-    
+    /*var url_courrier = url + "orden="+ 'aqui va id_compra'+"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion;
+          //pedido a courriers
+          this.courrierC.getConsulta(url_courrier).subscribe(x=>{
+            console.log(url_courrier);
+          });
+        
+   
+    */
     
   }
   
