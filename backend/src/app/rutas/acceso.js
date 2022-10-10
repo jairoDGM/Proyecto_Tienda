@@ -130,6 +130,22 @@ module.exports = (app) => {
         })
     })
 
+    app.post('/login_dashboard', (req,res)=>{
+        let consulta = `SELECT * FROM clientes INNER JOIN asignacion_rol ON clientes.id_cliente=asignacion_rol.id_cliente WHERE correo = '${req.body.correo}' AND contrasena = '${req.body.contrasena}' `;
+        conn.query(consulta, (err,rows,cols)  => {
+            if(err){
+                res.status(500).json({status:0, mensaje:"Error en la Base de datos"});
+            }else{
+                if(rows.length >0){
+                    const token = jwt.sign({correo: req.body.correo}, secretKey, {expiresIn:'2h'});
+                    res.json({status:1, mensaje: "Usuario Exitoso", key: token});
+                }else {
+                    res.status(400).json({status:0, mensaje: "No se encontro el usuario"});
+                }
+            }
+        })
+    })
+
 
     app.get('/consultaCompra/:id_compra',(req,res) => {
         const{id_compra} = req.params

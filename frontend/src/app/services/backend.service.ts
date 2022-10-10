@@ -72,6 +72,13 @@ export class BackendService {
     return this.httpClient.post<LoginResponse>(BE_API + '/login',login, httpOptions);
   }
 
+  inicioSesionAdmin(loginadmin:LoginRequest){
+    console.log(BE_API + '/login_dashboard')
+    console.log(loginadmin)
+    return this.httpClient.post<LoginResponse>(BE_API + '/login_dashboard',loginadmin, httpOptions);
+  }
+
+
   obtenerCourrier(id_courrier:string){
     return this.httpClient.get<ResCourrierResponse>(BE_API + '/consultaCompra/' + id_courrier, httpOptions);
   }

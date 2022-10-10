@@ -22,11 +22,11 @@ export class ListadoComponent implements OnInit {
   }
 
   login(){
-    let login = new LoginRequest(
+    let loginadmin = new LoginRequest(
       this.formGroup.controls['correo'].value,
       this.formGroup.controls['contrasena'].value,
     );
-    this.backend.inicioSesion(login).subscribe(x => {
+    this.backend.inicioSesionAdmin(loginadmin).subscribe(x => {
       console.log("Respuesta : " + x);
       alert(x.mensaje)
       if(typeof(Storage) !== 'undefined'){

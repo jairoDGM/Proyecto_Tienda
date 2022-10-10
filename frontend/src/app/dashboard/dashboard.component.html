@@ -19,7 +19,7 @@
             </label>
             <nav>
                 <ul>
-                    <li><a href="/dashboard" id="selected"></a></li>
+                    <li><a id="selected"></a></li>
                     <li><a (click)="mover6()">Cerrar Sesion</a></li>
                 </ul>
             </nav>
@@ -127,7 +127,6 @@
                         </mat-form-field>
                         <mat-radio-group aria-label="Select an option" formControlName="tipo_usuario">
                             <mat-radio-button  value="admin" >Administrador</mat-radio-button>
-                            <mat-radio-button value="cliente">Cliente</mat-radio-button>
                         </mat-radio-group>
                         <button (click)="insertarRol()" class="boton_clientes" mat-raised-button color="primary">Ingresar Datos</button>
                     </form>

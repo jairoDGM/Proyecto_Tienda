@@ -34,7 +34,7 @@ export class PagoFormularioComponent implements OnInit {
   nombre="";//
   estado_tarjeta="";//
   numero_autorizacion=0;//
-  total_pagar=0;//me lo envian, faltaa sacarlo
+  total_pagar=100;//me lo envian, faltaa sacarlo
   destinatario="";//
   total=0;
   correo_actual="";
@@ -79,11 +79,12 @@ export class PagoFormularioComponent implements OnInit {
     //obtencion valores del html
 
      //construccion url
-    //var url_tarjeta = url + "tarjeta="+tarjeta+"&nombre="+this.nombre+"&fecha_venc="+fecha_venc+"&num_seguridad"+num_seguridad+"&monto="+this.monto+"&tienda=codotech&formato=JSON";
+    const url_tarjeta = url + "tarjeta="+tarjeta+"&nombre="+this.nombre+"&fecha_venc="+fecha_venc+"&num_seguridad="+num_seguridad+"&monto="+this.total_pagar+"&tienda=CODOTECH&formato=JSON";
     //construccion url
 
     //obtencion de json del webservice
-    this.courrierC.getConsulta(url).subscribe(resp =>{
+    this.courrierC.getConsulta(url_tarjeta).subscribe(resp =>{
+      console.log(url_tarjeta);
       console.log(resp);
       this.respuestas_tarjeta=resp.autorizacion;
       this.compania_tarjeta=this.respuestas_tarjeta.emisor
@@ -206,8 +207,8 @@ export class PagoFormularioComponent implements OnInit {
                 console.log(resp.data);
               });
 
-              var url_courrier = url + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion;
-              this.courrierC.getConsulta(url_courrier).subscribe(x=>{
+              const url_courrier = url + "/envio.php?" + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion+"&tienda=CODOTECH";
+              this.courrierC.getPost(url_courrier).subscribe(x=>{
                 console.log(url_courrier);
               });
 

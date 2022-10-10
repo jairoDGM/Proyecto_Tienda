@@ -28,7 +28,6 @@ export class RegistroComponent implements OnInit {
   }
 
   insertarCliente(){
-
     let cliente = new Cliente(
         this.formGroup.controls['nombre'].value,
         this.formGroup.controls['fecha'].value,

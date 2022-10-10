@@ -60,7 +60,7 @@
         
                             <!--input de vencimiento-->
                             <label class="label">Fecha Vencimiento:</label>
-                            <input type="date" formControlName="date_venc">
+                            <input type="text" formControlName="date_venc">
         
                             <!--input de codigo-->
                             <label class="label">Codigo Seguridad:</label>
@@ -69,9 +69,9 @@
                             <label class="label">Emisor de Tarjeta:</label>
                             <mat-radio-group aria-label="Select an option" formControlName="url_tarjeta" style="background-color: gray;">
                                 <mat-radio-button  value="../../assets/Pruebas/consulta_tarjeta_visa.json">VISA</mat-radio-button><br>
-                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_dinersclub.json">Diners Club</mat-radio-button><br>
-                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_mastercard.json">Mastercard</mat-radio-button><br>
-                                <mat-radio-button value="../../assets/Pruebas/consulta_tarjeta_americanExpress.json">American Express</mat-radio-button>
+                                <mat-radio-button value="...BancaOnline/autorizacion.php?">Diners Club</mat-radio-button><br>
+                                <mat-radio-button value="https://warm-falls-07134.herokuapp.com/autorizacion?">Mastercard</mat-radio-button><br>
+                                <mat-radio-button value="...AmericanExpress-CC6/autorizacion.php?">American Express</mat-radio-button>
                             </mat-radio-group>
         
                             
