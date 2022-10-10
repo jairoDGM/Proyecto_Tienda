@@ -178,8 +178,8 @@ export class PagoFormularioComponent implements OnInit {
               console.log(resp.data);
             });
 
-            const url_courrier = url + '/envio?' + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion+"&tienda=CODOTECH";
-              this.courrierC.getPostCourrier(url_courrier).subscribe(x=>{
+            const url_courrier = url + "/envio.php?" + "orden="+ this.id_compra_ale +"&destinatario="+ dest +"&destino="+postal+"&direccion="+this.direccion+"&tienda=CODOTECH";
+              this.courrierC.getPost(url_courrier).subscribe(x=>{
                 console.log(url_courrier);
               });
 

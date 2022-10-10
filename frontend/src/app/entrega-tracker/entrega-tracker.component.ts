@@ -69,7 +69,7 @@ export class EntregaTrackerComponent implements OnInit {
             })
           //IF PARA VER SI ES FORZA
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-          }else if(itemMinuscula === 'forza g'){
+          }else if(itemMinuscula === 'forzag'){
             //CONSTRUIMOS LINK Y MANDAMOS LA SOLICITUD
             //const url_apiFORZA='../../assets/Pruebas/status3.json'
             const url_apiFORZA1='http://forzagcourrier.herokuapp.com' + "/status.php?" + "orden=" + this.numero_compra +"&tienda=CODOTECH"+"&formato=JSON" 
