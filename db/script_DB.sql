@@ -36,7 +36,7 @@ USE db_tienda_ct;
     
     CREATE TABLE catalogo_carrito(
 		codigo_producto integer,
-        id_cliente integer,
+        nombre_producto char(50),
         precio float
 	);
 
