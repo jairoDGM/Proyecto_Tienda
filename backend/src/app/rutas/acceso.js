@@ -231,4 +231,119 @@ module.exports = (app) => {
 
     });
 
+
+    //PARA OBTENER id del cliente
+    app.get('/consultarClienteCarrito/:correo',(req,res) => {
+        let consulta = `SELECT id_cliente FROM clientes WHERE correo = '${req.params.correo}'`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla clientes"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el id del cliente correctamente", data: rows});
+            }
+        });
+    });
+
+    //PARA OBTENER CODIGO PRODUCTO
+    app.get('/consultarCodigoProducto/:id_cliente',(req,res) => {
+        var id_cliente = parseInt(req.params.id_cliente); 
+        let consulta = `SELECT codigo_producto FROM carrito WHERE id_cliente = ${id_cliente}`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla carrito"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el codigo del producto correctamente", data: rows});
+            }
+        });
+    });
+
+
+    //PARA OBTENER Info de Productos
+    app.get('/productosTabla/:codigo_producto',(req,res) => {
+        var codigo_producto = parseInt(req.params.codigo_producto); 
+        let consulta = `SELECT * FROM productos WHERE codigo_producto = ${codigo_producto}`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta en tabla productos"});
+            }else{
+                res.json({status:1, mensaje: "Se obtuvo el codigo del producto correctamente", data: rows});
+            }
+        });
+    });
+
+    
+    //INSERTA EN LA TABLA CARRITO
+    /*app.post('/insertarCarrito',(req,res) => {
+        id_cliente = parseInt(req.body.id_cliente);
+        codigo_producto=parseInt(req.body.codigo_producto);
+        cantidad_producto=parseInt(req.body.cantidad_producto);
+        let consulta = `INSERT INTO carrito (id_cliente,codigo_producto,cantidad_producto) VALUES (${id_cliente},${codigo_producto},${cantidad_producto})`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en inserccion a tabla carrito"});
+            }else{
+                res.json({status:1, mensaje: "Se inserto correctamente a tabla carrito correctamente", data: []});
+            }
+        });
+    });*/
+
+    //INSERTA EN LA TABLA CATALOGO CARRITO
+    app.post('/carrito_insert',(req,res) => {
+        const codigo_producto = parseInt(req.body.codigo_producto);
+        const precio=parseFloat(req.body.precio);
+        let consulta = `INSERT INTO catalogo_carrito (codigo_producto,nombre_producto,precio) VALUES (${codigo_producto},'${req.body.nombre_producto}',${precio})`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en inserccion a tabla carrito"});
+            }else{
+                res.json({status:1, mensaje: "Se inserto correctamente a tabla carrito correctamente", data: []});
+            }
+        });
+    });
+
+    app.get('/carrito_insert',(req,res) => {
+        let consulta = `SELECT * FROM catalogo_carrito `;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta"});
+            }else{
+                res.json({status:1, mensaje: "Carrito Obtenido", data: rows});
+            }
+        });
+    });
+
+
+    //Eliminacion elementos de tabla catalogo carrito
+    app.delete('/delete_catalogoProducto',(req,res) => {
+        let consulta = `DELETE FROM catalogo_carrito`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error no se pudo eliminar datos de catalogos_producto"});
+            }else{
+                res.json({status:1, mensaje: "Se elimino datos de catalogos producto", data: rows});
+            }
+        });
+    });
+    
+    app.get('/precio_total',(req,res) => {
+        let consulta = `SELECT SUM(precio) AS precio_total FROM catalogo_carrito`;
+        console.log(consulta);
+        conn.query(consulta, (err,rows,cols)=>{
+            if(err){
+                res.json({status:0, mensaje:"Error en consulta"});
+            }else{
+                res.json({status:1, mensaje: "Carrito Obtenido", data: rows});
+            }
+        });
+    });
+    
+
+
 }

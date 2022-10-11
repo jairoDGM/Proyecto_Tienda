@@ -17,9 +17,11 @@ export interface CarritoC{
 export class ShareService {
   private loginSource = new BehaviorSubject<String>("");
   private id = new BehaviorSubject<string>("");
-  private cartSource: BehaviorSubject<CarritoC> = new BehaviorSubject<CarritoC>({nombre_producto:'',precio:0,descripcion_producto:''})
+  private currentTotal = new BehaviorSubject<number>(0);
+
   currentLogin = this.loginSource.asObservable();
   currentLogin2 = this.id.asObservable();
+  currentTotal1 = this.currentTotal.asObservable();
 
 
 
@@ -33,6 +35,7 @@ export class ShareService {
     }
 
   
+
 
   get sharingObservable(){
     return this.currentLogin;
@@ -53,5 +56,13 @@ export class ShareService {
 
   changeLogin1(correo:string){
     this.id.next(correo);
+  }
+
+  getsharingObservable3(){
+    return this.currentTotal1;
+  }
+
+  addTotal(price:number){
+    this.currentTotal.next(price);
   }
 }

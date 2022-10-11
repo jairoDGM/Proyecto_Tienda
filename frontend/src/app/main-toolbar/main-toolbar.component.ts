@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { BackendService } from '../services/backend.service';
 import { ShareService } from '../services/share.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ShareService } from '../services/share.service';
 })
 export class MainToolbarComponent implements OnInit {
   data$: Observable<String>;
-  constructor(private route:Router, private share: ShareService) {
+  constructor(private route:Router, private share: ShareService, private backend:BackendService) {
     this.data$ = share.sharingObservable;
     
   }
@@ -44,9 +45,11 @@ export class MainToolbarComponent implements OnInit {
   }
 
   mover6(){
+    this.backend.delCatalogoProducto().subscribe(x=>{
+      console.log(x);
+    });
     localStorage.setItem("token", "")
     this.share.changeLogin("");
-
   }
 
 }

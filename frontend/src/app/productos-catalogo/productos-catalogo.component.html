@@ -5,11 +5,6 @@
             <div class="contenedor-detalles">
                 <div class="detalles">
                     <h1>Productos</h1>
-                    <div class="input-tracker">
-                        <label>Buscar por tipo o producto especifico:</label>
-                        <input type="text">
-                        <a href="/"><button class="bn632-hover bn22">Buscar Producto</button></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -57,6 +52,11 @@
               </mat-form-field>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
               
+                <ng-container matColumnDef="codigo_producto">
+                    <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                    <td mat-cell *matCellDef="let element" > {{element.codigo_producto}} </td>
+                  </ng-container>
+
                 <ng-container matColumnDef="nombre_producto">
                   <th mat-header-cell *matHeaderCellDef> Nombre </th>
                   <td mat-cell *matCellDef="let element" > {{element.nombre_producto}} </td>
@@ -80,7 +80,7 @@
 
                 <ng-container matColumnDef="eliminar">
                     <th mat-header-cell *matHeaderCellDef > Agregar al Carrito </th>
-                    <td mat-cell *matCellDef="let element"> <button (click)="enviarCarrito(element.nombre_producto,element.precio,element.descripcion_producto)" class="boton_clientes2" mat-raised-button color="primary"> <span class="material-symbols-outlined">
+                    <td mat-cell *matCellDef="let element"> <button (click)="enviarCarrito(element.codigo_producto,element.precio,element.nombre_producto)" class="boton_clientes2" mat-raised-button color="primary"> <span class="material-symbols-outlined">
                         shopping_cart
                     </span></button> </td>
                 </ng-container>

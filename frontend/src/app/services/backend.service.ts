@@ -1,12 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { catalogo_carrito } from '../modelos/catalogo_carrito';
+import { catalogo_carritoResponse } from '../modelos/catalogo_carritoResponse';
 import { Cliente } from '../modelos/Cliente';
 import { ClienteResponse } from '../modelos/ClienteResponse';
 import { ClienteResponseDel } from '../modelos/ClienteResponseDel';
 import { ClienteResResponse } from '../modelos/ClienteResResponse';
+import { codigoCarritoResponse } from '../modelos/codigoCarritoResponse';
 import { CompraRes } from '../modelos/CompraRes';
 import { CompraResResponse } from '../modelos/CompraResResponse';
+import { insertarCarrito } from '../modelos/insertarCarrito';
 import { LoginRequest } from '../modelos/LoginRequest';
 import { LoginResponse } from '../modelos/LoginResponse';
 import { pagoformulario } from '../modelos/pagoFormulario';
@@ -16,6 +20,7 @@ import { ProductoResponse } from '../modelos/ProductoResponse';
 import { ResCourrierResponse } from '../modelos/ResCourrierResponse';
 import { Rol } from '../modelos/Rol';
 import { RolResponse } from '../modelos/RolResponse';
+import { userCarritoResponse } from '../modelos/userCarritoResponse';
 
 const BE_API = environment.api_backend;
 const httpOptions = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
@@ -106,6 +111,34 @@ export class BackendService {
   verificarIdCompra(id_compra:number){
     return this.httpClient.get<pagoFormularioResponse>(BE_API + '/consultarIdCompra/' + id_compra, httpOptions);
   }
-  
 
+  clienteCarrito(correo:string){
+    return this.httpClient.get<userCarritoResponse>(BE_API + '/consultarClienteCarrito/' + correo, httpOptions);
+  }
+
+  getProducto(id_cliente:number){
+    return this.httpClient.get<codigoCarritoResponse>(BE_API + '/consultarCodigoProducto/' + id_cliente, httpOptions);
+  }
+
+  traerProductos(codigo_producto:number){
+    return this.httpClient.get<codigoCarritoResponse>(BE_API + '/productosTabla/' + codigo_producto, httpOptions);
+  }
+
+  insertarCarrito(catalogo_cart: catalogo_carrito){
+    console.log(BE_API + '/carrito_insert')
+    console.log(catalogo_cart)
+    return this.httpClient.post<catalogo_carritoResponse>(BE_API + '/carrito_insert', catalogo_cart ,httpOptions);
+  }
+
+  obtenerPart(){
+    return this.httpClient.get<catalogo_carritoResponse>(BE_API + '/carrito_insert', httpOptions);
+  }
+
+  delCatalogoProducto(){
+    return this.httpClient.delete<catalogo_carritoResponse>(BE_API + '/delete_catalogoProducto', httpOptions);
+  }
+
+  obtenerTotal(){
+    return this.httpClient.get<catalogo_carritoResponse>(BE_API + '/precio_total', httpOptions)
+  }
 }

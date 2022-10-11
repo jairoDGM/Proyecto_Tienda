@@ -30,6 +30,10 @@ export class CourrierCService {
    getConsulta(url_courrier:string):Observable<any>{
     return this.http.get(url_courrier, httpOptions);
    }
+
+   getConsulta2(url_courrier:string):Observable<any>{
+    return this.http.get(url_courrier);
+   }
    
 
    

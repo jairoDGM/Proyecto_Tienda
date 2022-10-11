@@ -34,7 +34,7 @@ export class PagoFormularioComponent implements OnInit {
   nombre="";//
   estado_tarjeta="";//
   numero_autorizacion=0;//
-  total_pagar=100;//me lo envian, faltaa sacarlo
+  total_pagar=0;//me lo envian, faltaa sacarlo
   destinatario="";//
   total=0;
   correo_actual="";
@@ -64,6 +64,11 @@ export class PagoFormularioComponent implements OnInit {
       destinatario:'',
       direccion:'',
     })  
+
+    this.share.getsharingObservable3().subscribe(x =>{
+      console.log(x)
+      this.total_pagar = x;
+    })
   }
 
   ngOnInit(): void {
@@ -115,7 +120,7 @@ export class PagoFormularioComponent implements OnInit {
     
     //obtencion de json del web service
     var prueba="";
-    this.courrierC.getConsulta(url_courrier).subscribe(resp =>{
+    this.courrierC.getConsulta2(url_courrier).subscribe(resp =>{
       console.log(resp) //json
       this.respuestas_courrier = resp.consultaprecio;
       prueba=this.respuestas_courrier.courrier;
@@ -249,6 +254,10 @@ export class PagoFormularioComponent implements OnInit {
         
    
     */
+          //borra datos de compra cuando ejecuta pago
+          this.backend.delCatalogoProducto().subscribe(x=>{
+            console.log(x);
+          });
     
   }
   

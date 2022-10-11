@@ -14,13 +14,61 @@
         <div class="contenedor">
             <h1>Visualizar Articulos en carrito</h1>
             <hr style="color: black; background-color: black; " />
-            <!--Imprimir tabla de carrito-->
             
+            <!--INICIO DE TABLA DE DATOS-->
+            
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                      
+              <!-- Position Column -->
+              <ng-container matColumnDef="codigo_producto">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.codigo_producto}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="nombre_producto">
+                <th mat-header-cell *matHeaderCellDef> Nombre Producto </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre_producto}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef> Precio Producto </th>
+                <td mat-cell *matCellDef="let element"> Q{{element.precio}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="eliminar">
+                  <th mat-header-cell *matHeaderCellDef > Eliminar Producto </th>
+                  <td mat-cell *matCellDef="let element"> <button (click)="eliminar2()" class="boton_clientes2" mat-raised-button color="primary"> <span class="material-symbols-outlined">
+                      delete
+                  </span></button> </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+              <!--FIN DE LA TABLA DE DATOS-->
 
             <hr style="color: black; background-color: black; " />
             <p class="subtotal"> Subtotal:</p>
+            <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+                      
+              <!-- Position Column -->
+              <ng-container matColumnDef="precio_total">
+                <th mat-header-cell *matHeaderCellDef> PRECIO TOTAL </th>
+                <td mat-cell *matCellDef="let element"> Q.{{element.precio_total}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="pagar">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element"> <button class="button" (click)="form(element.precio_total)">PAGAR YA!</button></td>
+              </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+            </table>
             <hr style="color: black; background-color: black; " />
-            <button class="bn5" (click)="form()">Formulario de pago</button>
+            
             <button class="bn5" (click)="prod()">Seguir Comprando</button>
             
         </div>
