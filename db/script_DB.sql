@@ -62,3 +62,5 @@ CREATE TABLE carrito(
 
 INSERT INTO rol (`tipo_usuario`) VALUES ('admin');
 INSERT INTO rol (`tipo_usuario`) VALUES ('cliente');
+INSERT INTO clientes (`nombre`,`fecha`,`contrasena`,`correo`) VALUES ('admin','2000-01-01','admin','admin@gmail.com');
+INSERT INTO asignacion_rol (`tipo_usuario`,`id_cliente`) VALUES ('admin',1);
