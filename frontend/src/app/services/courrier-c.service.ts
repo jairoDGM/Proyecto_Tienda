@@ -1,10 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
-const httpOptions = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
-
+//const httpOptions = {headers: new HttpHeaders().set('Content-Type', 'text')};
+const valor : string ='true'
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    "Access-Control-Allow-Origin": "*",
+    'ngrok-skip-browser-warning': valor
+    
+  } )
+};
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +28,17 @@ export class CourrierCService {
    
    //link de url ya terminada
    getConsulta(url_courrier:string):Observable<any>{
-    return this.http.get(url_courrier);
+    return this.http.get(url_courrier, httpOptions);
    }
+   
 
+   
 
    getPost(url_courrier:string){
     return from(
       fetch(url_courrier, // the url you are trying to access
         {
+          
           headers: {
             'Content-Type': 'application/json',
           },

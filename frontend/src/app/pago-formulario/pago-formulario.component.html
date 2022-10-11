@@ -15,7 +15,7 @@
                     <p class="factura_respuesta">{{direccion}}</p>
     
                     <label for="tarjeta_asociada">Detalles tarjeta</label>
-                    <P class="factura_respuesta" style="margin: 0%;">{{respuestas_tarjeta.emisor}}</P><br>
+                    <!--<P class="factura_respuesta" style="margin: 0%;">{{respuestas_tarjeta.emisor}}</P><br>-->
                     
                     <label for="Destinatario">Destinatario del envio</label>
                     <p class="factura_respuesta">{{destinatario}}</p>
@@ -69,9 +69,9 @@
                             <label class="label">Emisor de Tarjeta:</label>
                             <mat-radio-group aria-label="Select an option" formControlName="url_tarjeta" style="background-color: gray;">
                                 <mat-radio-button  value="../../assets/Pruebas/consulta_tarjeta_visa.json">VISA</mat-radio-button><br>
-                                <mat-radio-button value="...BancaOnline/autorizacion.php?">Diners Club</mat-radio-button><br>
+                                <mat-radio-button value="https://0cf3-2803-d100-e100-205-a40e-78fc-fce5-c47e.ngrok.io/BancaOnline/autorizacion.php?">Diners Club</mat-radio-button><br>
                                 <mat-radio-button value="https://warm-falls-07134.herokuapp.com/autorizacion?">Mastercard</mat-radio-button><br>
-                                <mat-radio-button value="...AmericanExpress-CC6/autorizacion.php?">American Express</mat-radio-button>
+                                <mat-radio-button value="https://f418-2800-98-1116-9b8-259d-41b8-8d84-3a64.ngrok.io/AmericanExpress-CC6/autorizacion.php?">American Express</mat-radio-button>
                             </mat-radio-group>
         
                             
