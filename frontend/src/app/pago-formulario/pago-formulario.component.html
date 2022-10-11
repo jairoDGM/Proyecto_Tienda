@@ -15,7 +15,7 @@
                     <p class="factura_respuesta">{{direccion}}</p>
     
                     <label for="tarjeta_asociada">Detalles tarjeta</label>
-                    <!--<P class="factura_respuesta" style="margin: 0%;">{{respuestas_tarjeta.emisor}}</P><br>-->
+                    <p class="factura_respuesta" style="margin: 0%;">{{respuestas_tarjeta.emisor}}</p><br>
                     
                     <label for="Destinatario">Destinatario del envio</label>
                     <p class="factura_respuesta">{{destinatario}}</p>
@@ -23,7 +23,6 @@
                     <label for="orde">Numero de orden del envio</label>
                     <p class="factura_respuesta">{{id_compra_ale}}</p>
                     
-                    <h2>Compras</h2>
                     <p class="respuesta_factura1">Total: Q{{total_pagar}}</p>
                     <div class="botones" style="display: flex; align-items: center; flex-direction: column;">
                         <button (click)="proceder()" class="bn5" style="width: 70%; margin-top: 2%;">Proceder</button>
