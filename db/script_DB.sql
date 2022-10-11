@@ -33,6 +33,12 @@ USE db_tienda_ct;
 		total_pagar float,
 		PRIMARY KEY (id_compra)
 	);
+    
+    CREATE TABLE catalogo_carrito(
+		codigo_producto integer,
+        id_cliente integer,
+        precio float
+	);
 
 -- Tablas de las relaciones entre entidades
 CREATE TABLE asignacion_rol(
